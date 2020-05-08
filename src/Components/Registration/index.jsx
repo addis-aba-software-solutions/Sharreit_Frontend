@@ -141,6 +141,12 @@ export default function Registration({ history }) {
       setForm({ ...form, ["confirm_password"]: updated });
     }
 
+    for (var element in form) {
+      if (form[element]["error"]) {
+        return false
+      }
+    }
+
     return completed;
   };
 
