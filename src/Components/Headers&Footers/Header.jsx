@@ -12,6 +12,7 @@ import { Add } from "@material-ui/icons";
 import Logo from "../../Assets/Group.svg";
 import keys from "../../Config/keys";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import routes from "../../Config/routes"
 
 export default ({ history }) => {
   const fullName = sessionStorage.getItem(keys["FULL_NAME"]);
@@ -95,7 +96,7 @@ export default ({ history }) => {
               </Button>
             </Grid>
             <Grid item>
-              {fullName === "" ? (
+              {fullName === "" || history.location.pathname == routes.singleItem? (
                 ""
               ) : (
                 <IconButton
