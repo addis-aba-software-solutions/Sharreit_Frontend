@@ -12,10 +12,17 @@ import { Add } from "@material-ui/icons";
 import Logo from "../../Assets/Group.svg";
 import keys from "../../Config/keys";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import logout from "./functions/logout"
+import routes from "../../Config/routes"
 
 export default ({ history }) => {
-  const fullName = sessionStorage.getItem(keys["FULL_NAME"]);
-
+  const fullName = localStorage.getItem(keys["FULL_NAME"]);
+  const goodBye = () => {
+    const response = logout()
+    if (response) {
+      history.push(routes.root)
+    }
+  }
   return (
     <AppBar
       style={{
@@ -119,15 +126,15 @@ export default ({ history }) => {
               ) : (
                 <Grid container>
                   <Grid item>
-                    <Typography variant="body1" style={classes.user_name}>
-                      {fullName}
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    <IconButton>
-                      <ExitToAppIcon color='secondary' />
-                    </IconButton>
-                  </Grid>
+                  <Typography variant="body1" style={classes.user_name}>
+                  {fullName}
+                  </Typography>
+                    </Grid>
+                    <Grid item>
+                    <IconButton onClick={goodBye}>
+                    <ExitToAppIcon color='secondary' />
+                  </IconButton>
+                    </Grid>
                 </Grid>
               )}
             </Grid>

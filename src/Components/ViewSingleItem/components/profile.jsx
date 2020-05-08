@@ -31,7 +31,7 @@ const classes = {
   ProfileName: {
     fontWeight: 600,
     color: "#004C3F",
-    fontSize: 29,
+    fontSize: 25,
   },
   Star: {
     color: "#F8E757",

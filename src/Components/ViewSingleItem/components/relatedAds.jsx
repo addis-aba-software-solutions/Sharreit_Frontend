@@ -15,7 +15,7 @@ const classes = {
     padding: 5,
   },
   relatedAdsPicture: {
-    maxHeight: 200,
+    height: 150,
     maxWidth: 200,
     minWidth: 200,
     borderRadius: 10,
@@ -37,6 +37,9 @@ const classes = {
     backgroundColor: "#F3FCF4",
     boxShadow: 0,
   },
+  relatedAdsPictureContainer: {
+    display: 'flex'
+  }
 };
 export default ({ id, category, subCategory, changeID }) => {
   const [loaded, setLoaded] = React.useState(false)

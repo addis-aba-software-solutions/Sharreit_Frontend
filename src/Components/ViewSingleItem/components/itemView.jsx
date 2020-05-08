@@ -17,17 +17,17 @@ import {
 } from "@material-ui/core";
 import Something from "../../../Assets/Rentalhouse.jpg";
 import SendRoundedIcon from "@material-ui/icons/SendRounded";
-import preLoaderImage from '../../../Assets/circle_loading_1.gif'
-import classes from './itemViewStyles'
-import fetchItem from '../functions/fetchItem'
-import { statusCodes } from '../../../Config/config'
+import preLoaderImage from "../../../Assets/circle_loading_1.gif";
+import classes from "./itemViewStyles";
+import fetchItem from "../functions/fetchItem";
+import { statusCodes } from "../../../Config/config";
 
 export default ({ id, category, subCatagory, changeID }) => {
   const [postID, setPostID] = React.useState(id)
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState("paper");
-  const [loaded, setLoaded] = React.useState(false)
-  const [postContent, setPost] = React.useState({})
+  const [loaded, setLoaded] = React.useState(false);
+  const [postContent, setPost] = React.useState({});
 
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -99,27 +99,36 @@ export default ({ id, category, subCatagory, changeID }) => {
 
       <Paper style={classes.root}>
         {" "}
-        <Grid xs={12}>
-        </Grid>
+        <Grid xs={12}></Grid>
         <Grid container xs={12}>
           <Grid xs={7}>
-            <img src={loaded? postContent.images[0] : preLoaderImage} style={classes.image} alt="" />
+            <img
+              src={loaded ? postContent.images[0] : preLoaderImage}
+              style={classes.image}
+              alt=""
+            />
             <Grid container spacing={3}>
-              {
-                loaded?
-                  postContent.images.map((item, index) => (
-                    index === 0? "" : <Grid item align="center">
-                      <img src={item} style={classes.otherImages} alt={"Product " + index} />
-                    </Grid>
-                  ))
-                : ""
-              }
+              {loaded
+                ? postContent.images.map((item, index) =>
+                    index === 0 ? (
+                      ""
+                    ) : (
+                      <Grid item align="center">
+                        <img
+                          src={item}
+                          style={classes.otherImages}
+                          alt={"Product " + index}
+                        />
+                      </Grid>
+                    )
+                  )
+                : ""}
             </Grid>
           </Grid>
 
           <Grid xs={5}>
             <Typography style={classes.bodyTitle} align="left">
-              {loaded? postContent.title : "Fetching your item..."}
+              {loaded ? postContent.title : "Fetching your item..."}
             </Typography>
 
             <Grid container xs={12}>
@@ -127,22 +136,26 @@ export default ({ id, category, subCatagory, changeID }) => {
                 <Grid container spacing={3}>
                   <Grid item>
                     <Typography style={classes.bodyTitle2}>
-                      {loaded? <b>Price / Day</b> : ""}
+                      {loaded ? <b>Price / Day</b> : ""}
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography style={classes.bodybody}>{loaded? postContent.price : ""}</Typography>
+                    <Typography style={classes.bodybody}>
+                      {loaded ? postContent.price : ""}
+                    </Typography>
                   </Grid>
                 </Grid>
 
                 <Grid container spacing={3}>
                   <Grid item>
                     <Typography style={classes.bodyTitle2}>
-                      {loaded? <b>Condition</b> : ""}
+                      {loaded ? <b>Condition</b> : ""}
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography style={classes.bodybody}>{loaded? postContent.condition : "" }</Typography>
+                    <Typography style={classes.bodybody}>
+                      {loaded ? postContent.condition : ""}
+                    </Typography>
                   </Grid>
                 </Grid>
               </Grid>
@@ -150,21 +163,23 @@ export default ({ id, category, subCatagory, changeID }) => {
                 <Grid container spacing={3}>
                   <Grid item>
                     <Typography style={classes.bodyTitle2}>
-                      {loaded? <b>Share Count</b> : ""}
+                      {loaded ? <b>Share Count</b> : ""}
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography style={classes.bodybody}>{loaded? "89 Times" : ""}</Typography>
+                    <Typography style={classes.bodybody}>
+                      {loaded ? "89 Times" : ""}
+                    </Typography>
                   </Grid>
                 </Grid>
 
                 <Grid container spacing={3}>
                   <Grid item>
-                    {loaded? (
+                    {loaded ? (
                       <Badge
                         badgeContent={
                           <Typography style={classes.availability}>
-                            {postContent.sold? "SOLD" : "Available"}
+                            {postContent.sold ? "SOLD" : "Available"}
                           </Typography>
                         }
                       >
@@ -172,46 +187,55 @@ export default ({ id, category, subCatagory, changeID }) => {
                           <b>Availability</b>
                         </Typography>
                       </Badge>
-                    ) : ""}
+                    ) : (
+                      ""
+                    )}
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
-            <Divider style={classes.spacing, { display: loaded? "flex" : "none" }} />
+            <Divider
+              style={(classes.spacing, { display: loaded ? "flex" : "none" })}
+            />
             <Grid xs={12} style={classes.description}>
-              <Typography>
-                {loaded? <b>Description</b> : ""}
-              </Typography>
+              <Typography>{loaded ? <b>Description</b> : ""}</Typography>
             </Grid>
             <Grid xs={12} style={classes.description}>
-              <Typography>
-                {loaded? postContent.description : "" }
-              </Typography>
+              <Typography>{loaded ? postContent.description : ""}</Typography>
             </Grid>
-            <Divider style={classes.spacing, { display: loaded? "flex" : "none" }} />
+            <Divider
+              style={(classes.spacing, { display: loaded ? "flex" : "none" })}
+            />
             <div style={classes.spacing} />
 
-            <Grid xs={12} item align="center">
-              <Button
-                variant="contained"
-                style={classes.TermAndCondition, { display: loaded? "flex" : "none" }}
-                onClick={handleClickOpen}
-              >
-                Terms And Conditions of this Item
-              </Button>
+            <Grid xs={12} style={classes.description} align="left">
+              <Typography>
+                {loaded ? <b>Terms And Conditions of this Item</b> : ""}
+              </Typography>
+            </Grid>
+            <Grid xs={12} style={classes.description}>
+              {loaded ? postContent.termAndCondition : ""}
             </Grid>
             <div style={classes.spacing} />
 
             <Grid xs={12} item align="left">
-              <Typography variant="caption" style={{ display: loaded? "flex" : "none" }}>
+              <Typography
+                variant="caption"
+                style={{ display: loaded ? "flex" : "none" }}
+              >
                 Please Make sure you have read the terms and conditions of this
-                item before contacting the Supplier
+                item before contacting the Supplier.
               </Typography>
             </Grid>
-
             <Box style={classes.spacing} />
 
-            <Grid container xs={12} display="flex" justify="space-between" style={{ display: loaded? "flex" : "none" }}>
+            <Grid
+              container
+              xs={12}
+              display="flex"
+              justify="space-between"
+              style={{ display: loaded ? "flex" : "none" }}
+            >
               <Grid item xs={11}>
                 <TextField fullWidth multiline label="Contact The Supplier" />
               </Grid>

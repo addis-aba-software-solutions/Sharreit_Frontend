@@ -25,14 +25,21 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <b>iWork PLC</b> {new Date().getFullYear()}
+      <b>Sharreit :</b> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
 }
 
-export default function SignIn({ history }) {
+export default ({ history }) => {
   const classes = useStyles();
+  var token = ""
+
+  React.useEffect(() => {
+    if (localStorage[keys['TOKEN']]) {
+      history.push(routes.root)
+    }
+  }, [])
 
   const [state, setState] = React.useState({
     email: "",
