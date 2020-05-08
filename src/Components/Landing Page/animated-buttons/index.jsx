@@ -73,10 +73,9 @@ const Example = ({ start, amount }) => {
               </Zoom>
               <Fade in={note.sideNotes[index]} timeout={900}>
                 <div className={classes.sideCaption}>
-                  <Typography variant="h6">Volkswaggen</Typography>
+                  <Typography variant="h6">ed ut perspiciatis</Typography>
                   <p>
-                    The amazing family car that will take you anywhere you want,
-                    and something something.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
                   </p>
                 </div>
               </Fade>

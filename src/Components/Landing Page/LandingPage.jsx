@@ -24,6 +24,9 @@ import AnimatedButtons from "./animated-buttons";
 import routes from "../../Config/routes";
 import keys from "../../Config/keys";
 import logout from "../Headers&Footers/functions/logout";
+import ticket from "../../Assets/ticket.jpg";
+import nanny from "../../Assets/nanny.jpg";
+
 
 class LandingPage extends React.Component {
   constructor() {
@@ -555,7 +558,7 @@ class LandingPage extends React.Component {
                       marginTop: 30,
                     }}
                   >
-                    <img style={classes.CarImage2} src={homeImage} alt="" />
+                    <img style={classes.CarImage2} src={nanny} alt="" />
                   </Grid>
                 </Grid>
                 <Grid xs={12} container display="flex" justify="flex-end">
@@ -578,7 +581,7 @@ class LandingPage extends React.Component {
                 </Grid>
                 <Grid xs={12}>
                   <Typography align="left" style={classes.secondaryContainers1}>
-                    Looking For a time Away? We Got Just the thing For You!!
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
                   </Typography>
                   <Typography
                     align="left"
@@ -587,7 +590,7 @@ class LandingPage extends React.Component {
                       color: "#7D7D7D",
                     }}
                   >
-                    Bring your Minamn to life with an Rental website.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
                   </Typography>
                 </Grid>
                 {/* Card One Body */}
@@ -598,7 +601,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        CONSTRUCTION
+                        LOREM IPSUM
                       </Typography>
                       <Typography
                         align="left"
@@ -608,8 +611,9 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Bring your Minamn to life with an Rental website. Bring
-                        your Minamn to life with an Rental website.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+
                       </Typography>
                     </div>
                     <div
@@ -621,7 +625,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        Luxury
+                        LOREM IPSUM
                       </Typography>
                       <Typography
                         align="left"
@@ -631,8 +635,9 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Bring your Minamn to life with an Rental website. Bring
-                        your Minamn to life with an Rental website.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+
                       </Typography>
                     </div>
                     <div
@@ -644,7 +649,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        BASIC
+                        LOREM IPSUM
                       </Typography>
                       <Typography
                         align="left"
@@ -654,9 +659,9 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Bring your Minamn to life with a Sharing Website
-                        website. Bring your Minamn to life with an Rental
-                        website.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+
                       </Typography>
                     </div>
                   </Grid>
@@ -669,7 +674,7 @@ class LandingPage extends React.Component {
                       marginTop: 30,
                     }}
                   >
-                    <img style={classes.CarImage2} src={Boat} alt="" />
+                    <img style={classes.CarImage2} src={ticket} alt="" />
                   </Grid>
                 </Grid>
                 <Grid xs={12} container display="flex" justify="flex-end">

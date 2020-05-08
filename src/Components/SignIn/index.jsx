@@ -25,7 +25,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <b>iWork PLC</b> {new Date().getFullYear()}
+      <b>Sharreit :</b> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
