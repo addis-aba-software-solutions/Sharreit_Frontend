@@ -10,4 +10,4 @@ export const statusCodes = {
     FAILURE: 400
 }
 
-export const REPO_ADDRESS = "Sharreit_Frontend"
+export const REPO_ADDRESS = ""
