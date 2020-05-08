@@ -81,7 +81,7 @@ export default ({ history, location }) => {
           </Grid>
 
           <Grid xs={6} container spacing={4} display="flex" justify="flex-end">
-            <Grid item>
+            <Grid item> 
               <Button style={classes.Headertext1}>
                 <Grid container>
                   <Grid item>Pricing</Grid>
