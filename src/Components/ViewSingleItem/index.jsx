@@ -6,6 +6,9 @@ import { Grid, Divider, Typography, Box } from "@material-ui/core";
 import Profile from "./components/profile";
 import RelatedAds from "./components/relatedAds";
 import ItemView from "./components/itemView";
+import fetchItem from "./functions/fetchItem";
+import preLoaderImage from "../../Assets/circle_loading_1.gif";
+import PremiumAds from "../Category Page/components/PremiumAds";
 
 export default ({ location }) => {
   const [postID, setID] = React.useState(location.state.id)
@@ -16,6 +19,7 @@ export default ({ location }) => {
   }
 
   return (
+    <>
     <div style={classes.root}>
       <Grid xs={12} style={classes.appbarShift}>
         <Header />
@@ -44,13 +48,18 @@ export default ({ location }) => {
           </Grid>
         </Grid>
       </Grid>
-      <Divider></Divider>
-      <Typography>Premium Ads</Typography>
-      <Divider style={{ marginTop: 20 }}></Divider>
+      <Divider style={{ margin: 20 }}></Divider>
+      <Grid xs={4} container>
+        <Typography style={classes.PremiumAds}>Premium Ads</Typography>
+      </Grid>
+      <PremiumAds />
+      <Divider style={{ margin: 20 }}></Divider>
 
-      {/* <Grid>
-        <Footer />
-      </Grid> */}
+
     </div>
+          <Grid>
+          <Footer />
+        </Grid>
+        </>
   );
 }

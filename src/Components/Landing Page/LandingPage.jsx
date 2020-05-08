@@ -19,15 +19,25 @@ import {
 } from "@material-ui/core";
 import Logo from "../../Assets/Group.svg";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import AnimatedButtons from "./animated-buttons";
 import routes from "../../Config/routes";
 import keys from "../../Config/keys";
-// import fetchAllItems from "./functions/fetchItems";
+import logout from "../Headers&Footers/functions/logout";
 
 class LandingPage extends React.Component {
   constructor() {
     super();
     this.state = { animationStart: false, name: "" };
+    this.goodBye = this.goodBye.bind(this);
+  }
+
+  goodBye() {
+    const response = logout();
+    if (response) {
+      this.setState({ name: "" });
+      this.props.history.push(routes.root);
+    }
   }
 
   routeChange() {
@@ -42,12 +52,13 @@ class LandingPage extends React.Component {
   }
 
   async componentDidMount() {
-    const token = sessionStorage.getItem(keys["TOKEN"]);
+    const token = localStorage.getItem(keys["TOKEN"]);
     if (typeof token === "string") {
       const { firstName, lastName } = await fetchUserInfo();
-      sessionStorage.setItem(keys["FULL_NAME"], firstName + " " + lastName);
+      localStorage.setItem(keys["FULL_NAME"], firstName + " " + lastName);
       this.setState({ name: firstName + " " + lastName });
     }
+    console.log(this.state.name);
   }
 
   render() {
@@ -160,9 +171,18 @@ class LandingPage extends React.Component {
                         Categories
                       </Button>
                     ) : (
-                      <Typography style={classes.user_name} variant="body1">
-                        {this.state.name}
-                      </Typography>
+                      <Grid container>
+                        <Grid item>
+                          <Typography variant="body1" style={classes.user_name}>
+                            {this.state.name}
+                          </Typography>
+                        </Grid>
+                        <Grid item>
+                          <IconButton onClick={this.goodBye}>
+                            <ExitToAppIcon color="secondary" />
+                          </IconButton>
+                        </Grid>
+                      </Grid>
                     )}
                   </Grid>
                 </Grid>

@@ -31,8 +31,15 @@ function Copyright() {
   );
 }
 
-export default function SignIn({ history }) {
+export default ({ history }) => {
   const classes = useStyles();
+  var token = ""
+
+  React.useEffect(() => {
+    if (localStorage[keys['TOKEN']]) {
+      history.push(routes.root)
+    }
+  }, [])
 
   const [state, setState] = React.useState({
     email: "",
