@@ -6,6 +6,7 @@ import {
   Grid,
   Divider,
   Typography,
+  Button
 } from "@material-ui/core";
 import ProfilePicture from "../../../Assets/ww.jpg";
 import StarIcon from "@material-ui/icons/Star";
@@ -39,6 +40,10 @@ const classes = {
   small: {
     width: 30,
     height: 30,
+  },
+  button: {
+    backgroundColor: "#008060",
+    color: "#FFFFFF",
   },
 };
 
@@ -114,6 +119,15 @@ export default function Profile() {
                 </Typography>
               </Grid>
             </Grid>
+
+          <Divider />
+
+          <Grid align='center' style={{ marginTop: 10 }} xs={12}>
+                <Button style={classes.button}  size='small' variant="contained">
+                      Your Items
+                </Button>
+            </Grid>
+
           </Grid>
       </Grid>
     </Paper>

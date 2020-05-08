@@ -16,11 +16,13 @@ import {
 } from "@material-ui/core";
 import { Add, Done } from "@material-ui/icons";
 import useStyles from "./styles";
-import options from "./options";
-import fields from "./fieds";
+import { fields, options, categories, subCategories  } from "./data";
 import Header from "../Headers&Footers/Header";
+import addItem from "./functions/addItem"
+import { statusCodes } from '../../Config/config'
+import routes from '../../Config/routes'
 
-const AddItem = () => {
+const AddItem = ({ history }) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     title: "",
@@ -30,8 +32,10 @@ const AddItem = () => {
     price: "",
     location: "",
     terms_and_conditions: "",
-    item_images: ["", "", "", ""],
+    item_images: ["", "", "", ""]
   });
+
+  const [productImages, setProductImages] = React.useState([])
 
   const [text, setText] = React.useState({
     title: fields.title,
@@ -44,10 +48,15 @@ const AddItem = () => {
     item_images: fields.item_images,
   });
 
+  const [showSub, setShowSub] = React.useState(false)
+
   const handleFile = (event) => {
     const { name, files } = event.target;
     const { item_images } = state;
     item_images[name] = URL.createObjectURL(files[0]);
+    var images = productImages
+    images.push(files[0])
+    setProductImages(images)
     setState({ ...state, item_images });
     if (text.item_images.error) {
       var update = text.item_images;
@@ -58,6 +67,9 @@ const AddItem = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setState({ ...state, [name.toLocaleLowerCase()]: value });
+    if (name.toLocaleLowerCase() === "category" && value !== "") {
+      setShowSub(true)
+    }
   };
 
   const checkForm = () => {
@@ -89,11 +101,13 @@ const AddItem = () => {
     return false;
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const result = checkForm();
     if (result) {
-      // Here goes the api call
-      console.log("Success");
+      const { status } = await addItem(state, productImages)
+      if (status === statusCodes.SUCCESS_CREATED) {
+        history.push(routes.singleItem)
+      }
     }
   };
 
@@ -218,7 +232,7 @@ const AddItem = () => {
                     error={text.category.error}
                   >
                     <option aria-label="None" value="" />
-                    {options.category.map((category) => (
+                    {categories.map((category) => (
                       <option value={category}>{category}</option>
                     ))}
                   </Select>
@@ -229,7 +243,7 @@ const AddItem = () => {
                     : text.category.helperText}
                 </FormHelperText>
               </FormControl>
-              <FormControl variant="outlined" className={classes.singularField}>
+              <FormControl variant="outlined" className={classes.singularField} style={{ display: showSub? "flex" : "none" }}>
                 <InputLabel htmlFor="sub-category">Sub-Category</InputLabel>
                 <Box boxShadow={1} width={250} className={classes.box}>
                   <Select
@@ -242,13 +256,19 @@ const AddItem = () => {
                     className={classes.controlFields}
                     name="sub_category"
                     onChange={handleChange}
+                    error={text.sub_category.error}
                   >
                     <option aria-label="None" value="" />
-                    {options.sub_category.map((subCategory) => (
+                    {!showSub ? "" : subCategories[state.category].map((subCategory) => (
                       <option value={subCategory}>{subCategory}</option>
                     ))}
                   </Select>
                 </Box>
+                <FormHelperText error={text.sub_category.error}>
+                  {text.sub_category.error
+                    ? text.sub_category.errorText
+                    : text.sub_category.helperText}
+                </FormHelperText>
               </FormControl>
             </div>
             <div className={classes.rightSide}>

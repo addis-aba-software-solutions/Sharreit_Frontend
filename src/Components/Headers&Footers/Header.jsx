@@ -1,11 +1,21 @@
 import React from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
 import classes from "./styles";
-
-import { Button, Grid, AppBar } from "@material-ui/core";
+import {
+  Button,
+  Grid,
+  AppBar,
+  Typography,
+  IconButton,
+} from "@material-ui/core";
+import { Add } from "@material-ui/icons";
 import Logo from "../../Assets/Group.svg";
-export default function Header() {
+import keys from "../../Config/keys";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+export default ({ history }) => {
+  const fullName = sessionStorage.getItem(keys["FULL_NAME"]);
+
   return (
     <AppBar
       style={{
@@ -85,13 +95,45 @@ export default function Header() {
               </Button>
             </Grid>
             <Grid item>
-              <Button align="right" variant="contained" style={classes.button}>
-                Categories
-              </Button>
+              {fullName === "" ? (
+                ""
+              ) : (
+                <IconButton
+                  align="right"
+                  variant="contained"
+                  style={classes.button}
+                >
+                  <Add />
+                </IconButton>
+              )}
+            </Grid>
+            <Grid item>
+              {fullName === "" ? (
+                <Button
+                  align="right"
+                  variant="contained"
+                  style={classes.button}
+                >
+                  Categories
+                </Button>
+              ) : (
+                <Grid container>
+                  <Grid item>
+                    <Typography variant="body1" style={classes.user_name}>
+                      {fullName}
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <IconButton>
+                      <ExitToAppIcon color='secondary' />
+                    </IconButton>
+                  </Grid>
+                </Grid>
+              )}
             </Grid>
           </Grid>
         </Grid>
       </div>
     </AppBar>
   );
-}
+};

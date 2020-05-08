@@ -22,25 +22,32 @@ import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import AnimatedButtons from "./animated-buttons";
 import routes from "../../Config/routes";
 import keys from "../../Config/keys";
-import fetchAllItems from "./functions/fetchItems";
+// import fetchAllItems from "./functions/fetchItems";
 
 class LandingPage extends React.Component {
   constructor() {
     super();
-    this.state = { animationStart: false };
+    this.state = { animationStart: false, name: "" };
   }
 
   routeChange() {
     this.props.history.push(routes.signIn);
   }
 
+  gotoCategory(type) {
+    this.props.history.push({
+      pathname: routes.category,
+      state: { type },
+    });
+  }
+
   async componentDidMount() {
     const token = sessionStorage.getItem(keys["TOKEN"]);
     if (typeof token === "string") {
-      //await fetchUserInfo()
+      const { firstName, lastName } = await fetchUserInfo();
+      sessionStorage.setItem(keys["FULL_NAME"], firstName + " " + lastName);
+      this.setState({ name: firstName + " " + lastName });
     }
-
-    await fetchAllItems();
   }
 
   render() {
@@ -131,22 +138,32 @@ class LandingPage extends React.Component {
                       </Grid>
                     </Button>
                   </Grid>
+                  {this.state.name === "" ? (
+                    <Grid item>
+                      <Button
+                        onClick={this.routeChange.bind(this)}
+                        style={classes.Headertext2}
+                      >
+                        LOGIN
+                      </Button>
+                    </Grid>
+                  ) : (
+                    ""
+                  )}
                   <Grid item>
-                    <Button
-                      onClick={this.routeChange.bind(this)}
-                      style={classes.Headertext2}
-                    >
-                      LOGIN
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      align="right"
-                      variant="contained"
-                      style={classes.button}
-                    >
-                      Categories
-                    </Button>
+                    {this.state.name === "" ? (
+                      <Button
+                        align="right"
+                        variant="contained"
+                        style={classes.button}
+                      >
+                        Categories
+                      </Button>
+                    ) : (
+                      <Typography style={classes.user_name} variant="body1">
+                        {this.state.name}
+                      </Typography>
+                    )}
                   </Grid>
                 </Grid>
               </Grid>
@@ -163,27 +180,27 @@ class LandingPage extends React.Component {
             {/* Starting Of Body One's Right Side */}
             <Grid item xs={6}>
               <Typography style={classes.body_One} align="left">
-                Share ---
+                Share
               </Typography>
               <Typography style={classes.body_OneEverything} align="left">
                 everything
               </Typography>
               <Typography style={classes.body_Two} align="left">
                 One Platform that lets you Share Whatever you have Whenever is
-                required blah blah lets you Share Your Whatever you have
+                inquired,
               </Typography>
               <Grid style={classes.body_Three} container xs={12}>
                 <Grid xs={5}>
                   <Typography align="left" style={classes.body_Three_Header}>
-                    Online Store
+                    Trust-Worthy
                   </Typography>
                   <Typography
                     align="left"
                     variant="body2"
                     style={classes.body_Three_Body}
                   >
-                    Browse Through Our Store to find what you’re looking for
-                    ough Our Store to find what you’re looking for
+                    Sharreit makes sure that all the items you share are to be
+                    returned in the same condition it left
                   </Typography>
                 </Grid>
                 <Grid
@@ -194,30 +211,32 @@ class LandingPage extends React.Component {
                   }}
                 >
                   <Typography align="left" style={classes.body_Three_Header}>
-                    Online Store
+                    Beautiful Layout
                   </Typography>
                   <Typography
                     align="left"
                     variant="body2"
                     style={classes.body_Three_Body}
                   >
-                    Browse Through Our Store to find what you’re looking for
-                    ough Our Store to find what you’re looking for
+                    Sharreit is a sharing website with an easy to use user
+                    interface, making your experience more enjoyable while
+                    browsing
                   </Typography>
                 </Grid>
               </Grid>
               <Grid style={classes.body_Three} container xs={12}>
                 <Grid xs={5}>
                   <Typography align="left" style={classes.body_Three_Header}>
-                    Online Store
+                    Security
                   </Typography>
                   <Typography
                     align="left"
                     variant="body2"
                     style={classes.body_Three_Body}
                   >
-                    Browse Through Our Store to find what you’re looking for
-                    ough Our Store to find what you’re looking for
+                    We Care about your products on bahalf of you, So whatever
+                    you share, the person that's acquiring the item is fully
+                    responsible for the item.
                   </Typography>
                 </Grid>
                 <Grid
@@ -227,30 +246,30 @@ class LandingPage extends React.Component {
                   }}
                 >
                   <Typography align="left" style={classes.body_Three_Header}>
-                    Online Store
+                    24/7
                   </Typography>
                   <Typography
                     align="left"
                     variant="body2"
                     style={classes.body_Three_Body}
                   >
-                    Browse Through Our Store to find what you’re looking for
-                    ough Our Store to find what you’re looking for
+                    Unruled by timing or Quarentine , Shareit helps you rent
+                    your items beforehand your meetup,
                   </Typography>
                 </Grid>
               </Grid>
               <Grid style={classes.body_Three} container xs={12}>
                 <Grid xs={5}>
                   <Typography align="left" style={classes.body_Three_Header}>
-                    Online Store
+                    Chatting
                   </Typography>
                   <Typography
                     align="left"
                     variant="body2"
                     style={classes.body_Three_Body}
                   >
-                    Browse Through Our Store to find what you’re looking for
-                    ough Our Store to find what you’re looking for
+                    Browse Through Our Store to find what you’re looking for and
+                    click "Contact supplier", One Step Easier to get an item
                   </Typography>
                 </Grid>
               </Grid>
@@ -309,7 +328,7 @@ class LandingPage extends React.Component {
                     color: "#7D7D7D",
                   }}
                 >
-                  Bring your Finances to life with a Sharing website.
+                  Bring your Finances to life with Sharreit.
                 </Typography>
               </Grid>
 
@@ -331,8 +350,8 @@ class LandingPage extends React.Component {
                         paddingTop: 10,
                       }}
                     >
-                      Share your textbooks so others could aksjdhaksjdhaskj
-                      dhaskjdhkjdhaksjdhkaj
+                      Do you Have any books lying around?? why not make Profit
+                      out of it
                     </Typography>
                   </div>
                   <div
@@ -354,8 +373,8 @@ class LandingPage extends React.Component {
                         paddingTop: 10,
                       }}
                     >
-                      Bring your Minamn to life with an Rental website. Bring
-                      your Minamn to life with an Rental website.
+                      Are you the Hiker type? or do you like Campings?? Sharreit
+                      got the thing for you!
                     </Typography>
                   </div>
                   <div
@@ -377,8 +396,8 @@ class LandingPage extends React.Component {
                         paddingTop: 10,
                       }}
                     >
-                      Bring your Minamn to life with an Rental website. Bring
-                      your Minamn to life with an Rental website.
+                      Farming Equipments that could enhance your productivity
+                      and decrease your labor, We GOT the tools.
                     </Typography>
                   </div>
                 </Grid>
@@ -395,7 +414,7 @@ class LandingPage extends React.Component {
                 </Grid>
               </Grid>
               <Grid xs={12} container display="flex" justify="flex-end">
-                <Button>
+                <Button onClick={() => this.gotoCategory(0)}>
                   <Typography variant="caption">
                     See More SHARED PRODUCTS
                   </Typography>
@@ -419,12 +438,12 @@ class LandingPage extends React.Component {
               <Box style={classes.carsother}>
                 <Grid item xs={12}>
                   <Typography align="left" style={classes.secondaryContainers}>
-                    SERVICE SHARING :
+                    SERVICE SHARING
                   </Typography>
                 </Grid>
                 <Grid xs={12}>
                   <Typography align="left" style={classes.secondaryContainers1}>
-                    Find The Best Residence That Fits you Most
+                    Advertize your Skills on Sharreit, Get People to hire you!
                   </Typography>
                   <Typography
                     align="left"
@@ -433,7 +452,7 @@ class LandingPage extends React.Component {
                       color: "#7D7D7D",
                     }}
                   >
-                    Bring your Minamn to life with an Rental website.
+                    Get or Provide Services from or to your house.
                   </Typography>
                 </Grid>
 
@@ -445,7 +464,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        CONSTRUCTION
+                        NANNY
                       </Typography>
                       <Typography
                         align="left"
@@ -455,8 +474,8 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Bring your Minamn to life with an Rental website. Bring
-                        your Minamn to life with an Rental website.
+                        exhausted? do you need someone to take care of your
+                        kids?? Hire a Nanny
                       </Typography>
                     </div>
                     <div
@@ -468,7 +487,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        Luxury
+                        MUSIC TEACHER
                       </Typography>
                       <Typography
                         align="left"
@@ -478,8 +497,9 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Bring your Minamn to life with an Rental website. Bring
-                        your Minamn to life with an Rental website.
+                        Want a skill you never had?? or maybe thinking of
+                        improving your musical skills?? we know people that are
+                        willing to teach you!
                       </Typography>
                     </div>
                     <div
@@ -491,7 +511,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        BASIC
+                        TUTOR
                       </Typography>
                       <Typography
                         align="left"
@@ -501,8 +521,8 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Bring your Minamn to life with an Rental website. Bring
-                        your Minamn to life with an Rental website.
+                        Have Kids that are home schooled? Do you need A tutor?
+                        from languages to Academic Studies?
                       </Typography>
                     </div>
                   </Grid>
@@ -519,7 +539,7 @@ class LandingPage extends React.Component {
                   </Grid>
                 </Grid>
                 <Grid xs={12} container display="flex" justify="flex-end">
-                  <Button>
+                  <Button onClick={() => this.gotoCategory(1)}>
                     <Typography variant="caption">
                       see more about Service Sharing
                     </Typography>
@@ -533,7 +553,7 @@ class LandingPage extends React.Component {
               <Box style={classes.carsother}>
                 <Grid item xs={12}>
                   <Typography align="left" style={classes.secondaryContainers}>
-                    DIGITAL SHARING :
+                    DIGITAL SHARING
                   </Typography>
                 </Grid>
                 <Grid xs={12}>
@@ -614,8 +634,9 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Bring your Minamn to life with an Rental website. Bring
-                        your Minamn to life with an Rental website.
+                        Bring your Minamn to life with a Sharing Website
+                        website. Bring your Minamn to life with an Rental
+                        website.
                       </Typography>
                     </div>
                   </Grid>
@@ -632,7 +653,7 @@ class LandingPage extends React.Component {
                   </Grid>
                 </Grid>
                 <Grid xs={12} container display="flex" justify="flex-end">
-                  <Button>
+                  <Button onClick={() => this.gotoCategory(2)}>
                     <Typography variant="caption">
                       See More ABOUT digital sharing
                     </Typography>
@@ -672,7 +693,7 @@ class LandingPage extends React.Component {
             <Grid item>
               <Button style={classes.footerLayerText}>
                 <Grid container>
-                  <Grid item>Share Vehicles</Grid>
+                  <Grid item>Share Products</Grid>
                   <Grid item style={classes.expand}>
                     <ExpandMoreIcon fontSize="small" />
                   </Grid>
@@ -683,7 +704,7 @@ class LandingPage extends React.Component {
             <Grid item>
               <Button style={classes.footerLayerText}>
                 <Grid container>
-                  <Grid item>Share Boats</Grid>
+                  <Grid item>Share Services</Grid>
                   <Grid item style={classes.expand}>
                     <ExpandMoreIcon fontSize="small" />
                   </Grid>
@@ -694,7 +715,7 @@ class LandingPage extends React.Component {
             <Grid item>
               <Button style={classes.footerLayerText}>
                 <Grid container>
-                  <Grid item>Share Apartments</Grid>
+                  <Grid item>Share Digital Equipments</Grid>
                   <Grid item style={classes.expand}>
                     <ExpandMoreIcon fontSize="small" />
                   </Grid>

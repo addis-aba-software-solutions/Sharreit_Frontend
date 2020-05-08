@@ -146,7 +146,8 @@ const classes = {
   carsother: {
     // animation: animations.slideIn,
     animation: `pop-in ${easings.easeOutExpo} 2000ms forwards`,
-    height: "auto",
+    height: 700,
+
     width: 550,
     marginBottom: 100,
     borderRadius: 5,
@@ -178,6 +179,11 @@ const classes = {
   Logo: {
     height: 40,
     width: 80,
+  },
+
+  user_name: {
+    color: "#000",
+    marginTop: 11,
   },
 };
 

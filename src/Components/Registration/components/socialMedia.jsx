@@ -1,23 +1,15 @@
 import React from "react";
 import {
-  Avatar,
-  Button,
-  CssBaseline,
   TextField,
-  Paper,
-  Box,
+
   Grid,
-  Typography,
-  Select,
-  InputLabel,
-  FormControl,
   FormHelperText,
 } from "@material-ui/core";
-import { LockOutlined } from "@material-ui/icons";
+// import { LockOutlined } from "@material-ui/icons"
 import useStyles from "../styles";
-import { options } from "../data";
+// import { options } from "../data";
 
-import Logo from "../../../Assets/Group.svg";
+// import Logo from "../../../Assets/Group.svg";
 
 export default function SocialMedia({ form, handleChange }) {
   const classes = useStyles();

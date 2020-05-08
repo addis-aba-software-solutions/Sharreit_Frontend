@@ -1,11 +1,6 @@
 import React from "react";
 import {
-  Avatar,
-  Button,
-  CssBaseline,
   TextField,
-  Paper,
-  Box,
   Grid,
   Typography,
   Select,
@@ -13,11 +8,9 @@ import {
   FormControl,
   FormHelperText,
 } from "@material-ui/core";
-import { LockOutlined } from "@material-ui/icons";
 import useStyles from "../styles";
 import { options } from "../data";
 
-import Logo from "../../../Assets/Group.svg";
 
 export default function PersonalInformation({ form, handleChange }) {
   const classes = useStyles();

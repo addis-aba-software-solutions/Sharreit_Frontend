@@ -25,7 +25,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <b>iWork PLC</b> {new Date().getFullYear()}
+      <b>Sharreit PLC</b> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
@@ -62,9 +62,9 @@ export default function SignIn({ history }) {
     }
     if (complete) {
       setLoading(true)
-      const response = await signIn(state.email, state.password)
-      if (response.token !== "") {
-        sessionStorage.setItem(keys['TOKEN'], response.token)
+      const { data } = await signIn(state.email, state.password)
+      if (data.token !== "") {
+        sessionStorage.setItem(keys['TOKEN'], data.token)
         history.push(routes.root)
       }
     }
@@ -151,15 +151,12 @@ export default function SignIn({ history }) {
                     variant="contained"
                     className={classes.submit}
                     onClick={handleClick}
-                    // href="/CategoryPage"
                   >
                     Sign In
                   </Button>
                 )
-                
               }
             </Grid>
-
             <Grid container>
               <Grid item xs>
                 <Link className={classes.primary} href="#" variant="caption">

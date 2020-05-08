@@ -9,11 +9,9 @@ import {
 } from "@material-ui/core";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import Input from "@material-ui/core/Input";
-import VolumeUp from "@material-ui/icons/VolumeUp";
+
 
 const classes = {
   root: {
@@ -50,9 +48,6 @@ const classes = {
 export default function Filter() {
   const [age, setAge] = React.useState("");
 
-  function valuetext(value) {
-    return value;
-  }
 
   const [value, setValue] = React.useState(30);
 
@@ -72,7 +67,6 @@ export default function Filter() {
     }
   };
 
-  const [values, setValues] = React.useState("female");
 
   const handleChange = (event) => {
     setValue(event.target.value);

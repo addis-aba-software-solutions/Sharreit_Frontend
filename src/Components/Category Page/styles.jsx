@@ -1,4 +1,4 @@
-import { easings } from "react-animation";
+// import { easings } from "react-animation";
 
 const classes = {
   root: {

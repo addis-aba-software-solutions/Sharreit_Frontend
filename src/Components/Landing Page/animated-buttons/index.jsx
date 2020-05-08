@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { Grid, Zoom, Typography, Fade, Avatar } from "@material-ui/core";
-import clsx from "clsx";
 import useStyles from "./styles";
 import image from "./img/download.jpg";
-import { Visibility } from "@material-ui/icons";
 
 
 const Example = ({ start, amount }) => {

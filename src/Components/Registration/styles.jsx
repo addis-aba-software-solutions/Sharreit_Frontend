@@ -7,7 +7,8 @@ export default makeStyles((theme) => ({
     backgroundColor: "#F3FCF4",
   },
   root: {
-    height: "100vh",
+    minHeight: '100vh',
+    height: 'auto',
     marginRight: 300,
     backgroundColor: "#F3FCF4",
   },
