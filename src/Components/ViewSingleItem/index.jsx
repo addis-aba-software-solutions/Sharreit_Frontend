@@ -10,11 +10,10 @@ import fetchItem from "./functions/fetchItem";
 import preLoaderImage from "../../Assets/circle_loading_1.gif";
 import PremiumAds from "../Category Page/components/PremiumAds";
 
-export default ({ location }) => {
+export default ({ history, location }) => {
   const [postID, setID] = React.useState(location.state.id)
 
   const changeID = (id) => {
-    console.log(postID)
     setID(id)
   }
 
@@ -22,7 +21,7 @@ export default ({ location }) => {
     <>
     <div style={classes.root}>
       <Grid xs={12} style={classes.appbarShift}>
-        <Header />
+        <Header history={history} />
       </Grid>
       <Grid container xs={12} spacing={3}>
         <Grid item xs={9} style={classes.singleItemView}>

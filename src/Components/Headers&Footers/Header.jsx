@@ -15,7 +15,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import logout from "./functions/logout"
 import routes from "../../Config/routes"
 
-export default ({ history }) => {
+export default ({ history, location }) => {
   const fullName = localStorage.getItem(keys["FULL_NAME"]);
   const goodBye = () => {
     const response = logout()
@@ -102,13 +102,14 @@ export default ({ history }) => {
               </Button>
             </Grid>
             <Grid item>
-              {fullName === "" ? (
+              {fullName === "" || history.location.pathname == routes.singleItem ? (
                 ""
               ) : (
                 <IconButton
                   align="right"
                   variant="contained"
                   style={classes.button}
+                  onClick={() => history.push(routes.addItem)}
                 >
                   <Add />
                 </IconButton>

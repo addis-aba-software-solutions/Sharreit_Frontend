@@ -10,7 +10,7 @@ export default function ViewAllItems({ history, location }) {
   return (
     <>
       <div style={classes.appbarShift}>
-        <Header />
+        <Header history={history} />
       </div>
       <main style={classes.root}>
         <Grid container xs={12}>

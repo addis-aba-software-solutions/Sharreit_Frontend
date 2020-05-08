@@ -116,7 +116,7 @@ const AddItem = ({ history }) => {
 
   return (
     <Grid>
-      <Header />
+      <Header history={history} />
       <Box className={classes.rooot}>
         <Card className={classes.root}>
           <CardContent>
