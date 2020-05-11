@@ -7,12 +7,14 @@ import CategoryPage from "./Components/Category Page/";
 import LandingPage from "./Components/Landing Page/LandingPage";
 import SingleItem from "./Components/ViewSingleItem/";
 import AllItems from "./Components/ViewAllItems";
-import routes from './Config/routes';
+import HomePage from "./Components/HomePage";
+import routes from "./Config/routes";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path={routes.Home} component={HomePage} exact />
         <Route path={routes.root} component={LandingPage} exact />
         <Route path={routes.signIn} component={SignIn} exact />
         <Route path={routes.category} component={CategoryPage} exact />
