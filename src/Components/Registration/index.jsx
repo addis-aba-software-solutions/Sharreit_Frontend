@@ -3,15 +3,10 @@ import {
   Avatar,
   Button,
   CssBaseline,
-  TextField,
   Paper,
   Box,
   Grid,
   Typography,
-  Select,
-  InputLabel,
-  FormControl,
-  FormHelperText,
   Step,
   StepLabel,
   Stepper,
@@ -20,14 +15,13 @@ import { LockOutlined } from "@material-ui/icons";
 import useStyles from "./styles";
 import { fields, socialMedia, personalDetails } from "./data";
 import Logo from "../../Assets/Group.svg";
-import clsx from "clsx";
 import PersonalInformation from "./components/personalInformation";
-import SocialMediaInformation from './components/socialMedia';
-import FinalInformation from './components/finalStep'
-import routes from '../../Config/routes'
-import signup from './functions/signup'
-import { statusCodes } from '../../Config/config'
-import saveToken from '../../Config/saveToken'
+import SocialMediaInformation from "./components/socialMedia";
+import FinalInformation from "./components/finalStep";
+import routes from "../../Config/routes";
+import signup from "./functions/signup";
+import { statusCodes } from "../../Config/config";
+import saveToken from "../../Config/saveToken";
 
 function Copyright() {
   return (
@@ -35,7 +29,7 @@ function Copyright() {
       {"Copyright © "}
       SharreIt :{new Date().getFullYear()}
       {"."}
-    </Typography> 
+    </Typography>
   );
 }
 
@@ -47,8 +41,8 @@ const steps = [
 
 export default function Registration({ history }) {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(2);
-  const [loading, setLoading] = React.useState(false)
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
 
   const [state, setState] = React.useState({
     firstName: "",
@@ -62,7 +56,7 @@ export default function Registration({ history }) {
     province: "",
     country: "",
     zip_code: "",
-  })
+  });
 
   const [form, setForm] = React.useState({
     firstName: fields.firstName,
@@ -76,54 +70,61 @@ export default function Registration({ history }) {
     province: fields.province,
     country: fields.country,
     zip_code: fields.zip_code,
-  })
+  });
 
   const [social, setSocial] = React.useState({
-    telegram: "", facebook: "", whatsapp: ""
-  })
+    telegram: "",
+    facebook: "",
+    whatsapp: "",
+  });
 
   const [socialForms, setSocialForms] = React.useState({
     telegram: socialMedia.telegram,
     facebook: socialMedia.facebook,
-    whatsapp: socialMedia.whatsapp
-  })
+    whatsapp: socialMedia.whatsapp,
+  });
 
   const [final, setFinal] = React.useState({
-    phoneNumber: "", birthday: "", gender: ""
-  })
+    phoneNumber: "",
+    birthday: "",
+    gender: "",
+  });
 
   const [finalForm, setFinalForm] = React.useState({
     phoneNumber: personalDetails.phoneNumber,
     birthday: personalDetails.birthday,
-    gender: personalDetails.gender
-  })
+    gender: personalDetails.gender,
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setState({ ...state, [name]: value });
-  }
+  };
 
   const handleSocial = (event) => {
-    const { name, value } = event.target
-    setSocial({ ...social, [name]: value })
-  }
+    const { name, value } = event.target;
+    setSocial({ ...social, [name]: value });
+  };
 
   const handleFinal = (event) => {
-    const { name, value } = event.target
-    setFinal({ ...final, [name]: value })
-  }
+    const { name, value } = event.target;
+    setFinal({ ...final, [name]: value });
+  };
 
   const checkForm = () => {
-    var completed = true
+    var completed = true;
     for (var element in state) {
-      if (typeof state[element] === "string" && element !== "confirm_password") {
+      if (
+        typeof state[element] === "string" &&
+        element !== "confirm_password"
+      ) {
         var update = form[element];
         if (
           state[element] === "" &&
           form[element]["required"] &&
           !form[element]["error"]
         ) {
-          completed = false
+          completed = false;
           update["error"] = !form[element]["error"];
           setForm({ ...form, [element]: update });
         } else if (state[element] !== "" && form[element]["error"]) {
@@ -133,100 +134,116 @@ export default function Registration({ history }) {
       }
     }
 
-    if (state['password'] !== state['confirm_password']) {
-      completed = false
-      var updated = form['confirm_password']
-      updated['error'] = true
-      setForm({ ...form, ['confirm_password']: updated })
+    if (state["password"] !== state["confirm_password"]) {
+      completed = false;
+      var updated = form["confirm_password"];
+      updated["error"] = true;
+      setForm({ ...form, ["confirm_password"]: updated });
     }
 
-    return completed
-  }
+    for (var element in form) {
+      if (form[element]["error"]) {
+        return false
+      }
+    }
+
+    return completed;
+  };
 
   const checkSocial = () => {
-    var completed = true
+    var completed = true;
     for (var element in social) {
       var update = socialForms[element];
-      if (
-        social[element] === "" &&
-        socialForms[element]["required"]
-      ) {
-        completed = false
-        update["error"] = true
+      if (social[element] === "" && socialForms[element]["required"]) {
+        completed = false;
+        update["error"] = true;
         setSocialForms({ ...socialForms, [element]: update });
       } else if (social[element] !== "" && socialForms[element]["error"]) {
-        update["error"] = false
+        update["error"] = false;
         setSocialForms({ ...socialForms, [element]: update });
       }
     }
-    return completed
-  }
+    return completed;
+  };
 
   const checkFinal = () => {
-    var completed = true
+    var completed = true;
     for (var element in final) {
       var update = finalForm[element];
-      if (
-        final[element] === "" &&
-        finalForm[element]["required"]
-      ) {
-        completed = false
-        update["error"] = true
+      if (final[element] === "" && finalForm[element]["required"]) {
+        completed = false;
+        update["error"] = true;
         setFinalForm({ ...finalForm, [element]: update });
-      } else if (final[element] !== "" && finalForm[element]["error"] && typeof final[element] === "string") {
-        update["error"] = false
+      } else if (
+        final[element] !== "" &&
+        finalForm[element]["error"] &&
+        element !== "phoneNumber"
+      ) {
+        update["error"] = false;
         setFinalForm({ ...finalForm, [element]: update });
       }
     }
-    return completed
-  }
+
+    if (
+      final["phoneNumber"] === "+" ||
+      final["phoneNumber"] === "" ||
+      final["phoneNumber"] === "+1"
+    ) {
+      update = finalForm["phoneNumber"];
+      update["error"] = true;
+      setFinalForm({ ...finalForm, ["phoneNumber"]: update });
+    } else {
+      update = finalForm["phoneNumber"];
+      update["error"] = false;
+      setFinalForm({ ...finalForm, ["phoneNumber"]: update });
+    }
+
+    return completed;
+  };
 
   function getStepContent(step) {
     switch (step) {
-      case 0: 
-        return (
-          <PersonalInformation
-            form={form} handleChange={handleChange}
-          />
-        );
+      case 0:
+        return <PersonalInformation form={form} handleChange={handleChange} />;
       case 1:
         return (
           <SocialMediaInformation
-            form={socialForms} handleChange={handleSocial}
+            form={socialForms}
+            handleChange={handleSocial}
           />
         );
       case 2:
-        return <FinalInformation form={finalForm} handleChange={handleFinal} />
+        return <FinalInformation form={finalForm} handleChange={handleFinal} />;
       default:
         throw new Error("Unknown step");
     }
   }
 
   const handleNext = async () => {
-    var check = false
+    var check = false;
     if (activeStep === 0) {
-      check = checkForm()
-      if (!check) return null
+      check = checkForm();
+      if (!check) return null;
     } else if (activeStep === 1) {
-      check = checkSocial()
-      if (!check) return null
+      check = checkSocial();
+      if (!check) return null;
     } else if (activeStep == 2) {
-      check = checkFinal()
-      if (!check) return null
+      check = checkFinal();
+      if (!check) return null;
     }
 
     if (activeStep === 2) {
-      setLoading(true)
-      const { status, data } = await signup(state, social, final)
-      if (status === statusCodes['SUCCESS_CREATED']) {
-        saveToken(data.token)
-        history.push(routes.root)
+      setLoading(true);
+      const { status, data } = await signup(state, social, final);
+      if (status === statusCodes["SUCCESS_CREATED"]) {
+        saveToken(data.token);
+        history.push(routes.root);
       }
-      return null
+      return null;
     }
 
-    setActiveStep(activeStep + 1)
-  }
+    setActiveStep(activeStep + 1);
+  };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -279,28 +296,27 @@ export default function Registration({ history }) {
               ) : (
                 <React.Fragment>
                   {getStepContent(activeStep)}
-                  {
-                    loading? (
-                      <Typography variant="body1" className={classes.loading}>Please wait for a moment</Typography>
-                    ) : (
-                      <div className={classes.buttons}>
-                        {activeStep !== 0 && (
-                          <Button onClick={handleBack} className={classes.button}>
-                            Back
-                          </Button>
-                        )}
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          onClick={handleNext}
-                          className={classes.button}
-                        >
-                          {activeStep === steps.length - 1 ? "Sign up" : "Next"}
+                  {loading ? (
+                    <Typography variant="body1" className={classes.loading}>
+                      Please wait for a moment
+                    </Typography>
+                  ) : (
+                    <div className={classes.buttons}>
+                      {activeStep !== 0 && (
+                        <Button onClick={handleBack} className={classes.button}>
+                          Back
                         </Button>
-                      </div>
-                    )
-                  }
-                  
+                      )}
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleNext}
+                        className={classes.button}
+                      >
+                        {activeStep === steps.length - 1 ? "Sign up" : "Next"}
+                      </Button>
+                    </div>
+                  )}
                 </React.Fragment>
               )}
             </React.Fragment>

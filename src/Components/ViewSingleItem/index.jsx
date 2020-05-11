@@ -6,16 +6,26 @@ import { Grid, Divider, Typography, Box } from "@material-ui/core";
 import Profile from "./components/profile";
 import RelatedAds from "./components/relatedAds";
 import ItemView from "./components/itemView";
+import fetchItem from "./functions/fetchItem";
+import preLoaderImage from "../../Assets/circle_loading_1.gif";
+import PremiumAds from "../Category Page/components/PremiumAds";
 
-export default function SingleItem() {
+export default ({ history, location }) => {
+  const [postID, setID] = React.useState(location.state.id)
+
+  const changeID = (id) => {
+    setID(id)
+  }
+
   return (
+    <>
     <div style={classes.root}>
       <Grid xs={12} style={classes.appbarShift}>
-        <Header />
+        <Header history={history} />
       </Grid>
       <Grid container xs={12} spacing={3}>
         <Grid item xs={9} style={classes.singleItemView}>
-          <ItemView />
+          <ItemView id={postID} />
         </Grid>
         <Grid item xs={3} style={classes.divider} align="center">
           <Grid item>
@@ -33,17 +43,22 @@ export default function SingleItem() {
             }}
           />
           <Grid item>
-            <RelatedAds />
+            <RelatedAds changeID={changeID} id={postID} category={location.state.category} subCategory={location.state.subCategory} />
           </Grid>
         </Grid>
       </Grid>
-      <Divider></Divider>
-      <Typography>Premium Ads</Typography>
-      <Divider style={{ marginTop: 20 }}></Divider>
+      <Divider style={{ margin: 20 }}></Divider>
+      <Grid xs={4} container>
+        <Typography style={classes.PremiumAds}>Premium Ads</Typography>
+      </Grid>
+      <PremiumAds />
+      <Divider style={{ margin: 20 }}></Divider>
 
-      {/* <Grid>
-        <Footer />
-      </Grid> */}
+
     </div>
+          <Grid>
+          <Footer />
+        </Grid>
+        </>
   );
 }

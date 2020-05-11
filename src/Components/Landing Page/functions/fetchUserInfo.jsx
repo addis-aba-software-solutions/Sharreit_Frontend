@@ -1,9 +1,9 @@
 import { routes } from '../../../Config/apiRoutes'
-import { sendPostRequestWithToken } from '../../../Config/Networking'
+import { sendGetRequestWithToken } from '../../../Config/Networking'
 
 const fetchUserInfo = async () => {
-    const response = await sendPostRequestWithToken(routes.getUser, null)
-    console.log(response)
+    const { data } = await sendGetRequestWithToken(routes.getUser)
+    return { firstName: data.credentials.firstName, lastName: data.credentials.lastName }
 }
 
 export default fetchUserInfo

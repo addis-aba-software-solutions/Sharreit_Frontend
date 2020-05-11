@@ -6,16 +6,20 @@ import {
   Grid,
   Divider,
   Typography,
+  Button
 } from "@material-ui/core";
 import ProfilePicture from "../../../Assets/ww.jpg";
 import StarIcon from "@material-ui/icons/Star";
 import Facebook from "../../../Assets/FaceBookSVG.svg";
 import WhatsApp from "../../../Assets/WhatsAppSVG.svg";
 import Telegram from "../../../Assets/TelegramSVG.svg";
+import fetchProfile from '../functions/fetchProfile'
+import { statusCodes } from '../../../Config/config'
+import preLoader from '../../../Assets/circle_loading_2.gif'
 
 const classes = {
   root: {
-    minHeight: 50,
+    // minHeight: 50,
     height: "auto",
     padding: 20,
     borderRadius: 10,
@@ -27,7 +31,7 @@ const classes = {
   ProfileName: {
     fontWeight: 600,
     color: "#004C3F",
-    fontSize: 29,
+    fontSize: 25,
   },
   Star: {
     color: "#F8E757",
@@ -40,24 +44,49 @@ const classes = {
     width: 30,
     height: 30,
   },
+  button: {
+    backgroundColor: "#008060",
+    color: "#FFFFFF",
+  },
 };
 
 export default function Profile() {
+  const [user, setUser] = React.useState({})
+  const [loaded, setLoaded] = React.useState(false)
+
+  React.useEffect(async () => {
+    const { data, status } = await fetchProfile()
+    if (status === statusCodes.SUCCESS) {
+      const { credentials } = data
+      var fetchedUser = {
+        firstName: credentials.firstName,
+        lastName: credentials.lastName,
+        imageUrl: credentials.imageUrl,
+        createdAt: credentials.createdAt,
+        facebook: credentials.facebook,
+        telegram: credentials.telegram,
+        whatsapp: credentials.whatsapp
+      }
+      setUser(fetchedUser)
+      setLoaded(true)
+    }
+  }, [])
+
   return (
     <Paper style={classes.root}>
       <Grid container xs={12}>
         <Grid item xs={4} align="left">
           <Avatar
             alt="Profile Picture"
-            src={ProfilePicture}
+            src={loaded? user.imageUrl : preLoader}
             style={classes.profilePicture}
           />
         </Grid>
         <Grid item xs={8}>
           <Typography align="left" style={classes.ProfileName}>
-            John Doe
+            {loaded? user.firstName + " " + user.lastName : ""}
           </Typography>
-          <Grid container>
+          <Grid container style={{ display: loaded? "flex" : "none" }}>
             <StarIcon style={classes.Star} />
             <StarIcon style={classes.Star} />
             <StarIcon style={classes.Star} />
@@ -68,6 +97,7 @@ export default function Profile() {
               style={{
                 marginTop: 3,
                 color: "#7D7D7D",
+                display: loaded? "flex" : "none"
               }}
             >
               (97)
@@ -75,7 +105,7 @@ export default function Profile() {
           </Grid>
           <Grid style={classes.textColor}>
             <Typography align="left" variant="body2">
-              Member Since : 12/02/2019 (Family)
+              {loaded? user.createdAt : ""}
             </Typography>
           </Grid>
 
@@ -89,7 +119,7 @@ export default function Profile() {
               </Grid>
               <Grid item xs={10} style={{ marginTop: 4 }}>
                 <Typography variant="body2">
-                  hdjahsdgjashdgajshdgjhg
+                  {loaded? user.facebook : ""}
                 </Typography>
               </Grid>
             </Grid>
@@ -99,7 +129,7 @@ export default function Profile() {
               </Grid>
               <Grid item xs={10} style={{ marginTop: 4 }}>
                 <Typography variant="body2">
-                  hdjahsdgjashdgajshdgjhg
+                  {loaded? user.telegram : ""}
                 </Typography>
               </Grid>
             </Grid>
@@ -110,11 +140,20 @@ export default function Profile() {
               </Grid>
               <Grid item xs={10} style={{ marginTop: 4 }}>
                 <Typography variant="body2">
-                  hdjahsdgjashdgajshdgjhg
+                  {loaded? user.whatsapp : ""}
                 </Typography>
               </Grid>
             </Grid>
-          </Grid>
+
+          <Divider />
+
+          <Grid align='center' style={{ marginTop: 10 }} xs={12}>
+                <Button style={classes.button, {display: loaded? "" : "none"} }  size='small' variant="contained">
+                      Your Items
+                </Button>
+            </Grid>
+
+        </Grid>
       </Grid>
     </Paper>
   );

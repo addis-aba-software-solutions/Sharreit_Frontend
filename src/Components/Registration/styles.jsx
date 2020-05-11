@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import houseImage from "../../Assets/Rentalhouse.jpg";
+import nanny from "../../Assets/nanny.jpg";
+
 import { easings } from "react-animation";
 
 export default makeStyles((theme) => ({
@@ -7,7 +9,8 @@ export default makeStyles((theme) => ({
     backgroundColor: "#F3FCF4",
   },
   root: {
-    height: "100vh",
+    minHeight: '100vh',
+    height: 'auto',
     marginRight: 300,
     backgroundColor: "#F3FCF4",
   },
@@ -27,7 +30,7 @@ export default makeStyles((theme) => ({
     backgroundColor: "#F3FCF4",
   },
   image: {
-    backgroundImage: `url(${houseImage})`,
+    backgroundImage: `url(${nanny})`,
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"

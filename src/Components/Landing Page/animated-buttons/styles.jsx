@@ -11,7 +11,7 @@ export default makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "row",
-    width: 1000,
+    width: 750,
   },
 
   animated: {
@@ -34,7 +34,7 @@ export default makeStyles((theme) => ({
   },
 
   sideCaption: {
-    width: 3000,
+    width: 2000,
     height: 100,
     background: "#FFF8F6",
     marginLeft: 20,

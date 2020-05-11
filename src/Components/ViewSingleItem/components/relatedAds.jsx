@@ -1,6 +1,9 @@
 import React from "react";
 import { Typography, Box, Grid, List, Card, Paper } from "@material-ui/core";
 import Something from "../../../Assets/Rentalhouse.jpg";
+import fetchItems from '../../ViewAllItems/functions/fetchItemsBySubCategory'
+import { statusCodes } from '../../../Config/config'
+import routes from '../../../Config/routes'
 
 const classes = {
   title: {
@@ -12,7 +15,7 @@ const classes = {
     padding: 5,
   },
   relatedAdsPicture: {
-    maxHeight: 200,
+    height: 150,
     maxWidth: 200,
     minWidth: 200,
     borderRadius: 10,
@@ -34,87 +37,54 @@ const classes = {
     backgroundColor: "#F3FCF4",
     boxShadow: 0,
   },
+  relatedAdsPictureContainer: {
+    display: 'flex'
+  }
 };
-export default function relatedAds() {
+export default ({ id, category, subCategory, changeID }) => {
+  const [loaded, setLoaded] = React.useState(false)
+  const [content, setContent] = React.useState([])
+
+  React.useEffect(async () => {
+    const { status, data } = await fetchItems(category, subCategory)
+    if (status === statusCodes.SUCCESS) {
+      const { posts } = data
+      setContent(posts)
+      setLoaded(true)
+    }
+  }, [])
+
   return (
     <>
-      <Grid xs={12}>
+      <Grid xs={12} style={{ display: loaded && content.length > 0? "flex" : "none" }}>
         <Typography align="left" style={classes.title}>
           Related Ads
         </Typography>
       </Grid>
       <Box style={classes.relatedAdsContainer}>
         <List>
-          <Grid container xs={12} style={classes.relatedAds}>
-            <Grid xs={6} align="left">
-              <img src={Something} style={classes.relatedAdsPicture} alt="" />
-            </Grid>
-            <Grid xs={6} align="left">
-              <Typography style={classes.relatedAdsTitle}>
-                House For Rent House For Rent House For Rent
-              </Typography>
-              <Typography style={classes.relatedAdsBody}>600$/ Day</Typography>
-              <Typography style={classes.relatedAdsBody}>
-                Rent Count: 34 Times
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container xs={12} style={classes.relatedAds}>
-            <Grid xs={6} align="left">
-              <img src={Something} style={classes.relatedAdsPicture} alt="" />
-            </Grid>
-            <Grid xs={6} align="left">
-              <Typography style={classes.relatedAdsTitle}>
-                House For Rent House For Rent House For Rent
-              </Typography>
-              <Typography style={classes.relatedAdsBody}>600$/ Day</Typography>
-              <Typography style={classes.relatedAdsBody}>
-                Rent Count: 97 Times
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container xs={12} style={classes.relatedAds}>
-            <Grid xs={6} align="left">
-              <img src={Something} style={classes.relatedAdsPicture} alt="" />
-            </Grid>
-            <Grid xs={6} align="left">
-              <Typography style={classes.relatedAdsTitle}>
-                House For Rent House For Rent House For Rent
-              </Typography>
-              <Typography style={classes.relatedAdsBody}>600$/ Day</Typography>
-              <Typography style={classes.relatedAdsBody}>
-                Rent Count: 97 Times
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container xs={12} style={classes.relatedAds}>
-            <Grid xs={6} align="left">
-              <img src={Something} style={classes.relatedAdsPicture} alt="" />
-            </Grid>
-            <Grid xs={6} align="left">
-              <Typography style={classes.relatedAdsTitle}>
-                House For Rent House For Rent House For Rent
-              </Typography>
-              <Typography style={classes.relatedAdsBody}>600$/ Day</Typography>
-              <Typography style={classes.relatedAdsBody}>
-                Rent Count: 97 Times
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container xs={12} style={classes.relatedAds}>
-            <Grid xs={6} align="left">
-              <img src={Something} style={classes.relatedAdsPicture} alt="" />
-            </Grid>
-            <Grid xs={6} align="left">
-              <Typography style={classes.relatedAdsTitle}>
-                House For Rent House For Rent House For Rent
-              </Typography>
-              <Typography style={classes.relatedAdsBody}>600$/ Day</Typography>
-              <Typography style={classes.relatedAdsBody}>
-                Rent Count: 97 Times
-              </Typography>
-            </Grid>
-          </Grid>
+          {
+            loaded? content.map((item, index) => (
+              item.id !== id? (
+                <Grid container xs={12} style={classes.relatedAds} onClick={() => changeID(item.id)}>
+                <Grid xs={6} align="left">
+                  <img src={item.post.postImage[0]} style={classes.relatedAdsPicture} alt="" />
+                </Grid>
+                <Grid xs={6} align="left">
+                  <Typography style={classes.relatedAdsTitle}>
+                    {item.post.title}
+                  </Typography>
+                  <Typography style={classes.relatedAdsBody}>
+                    {`${item.post.price}$/ Day`}
+                  </Typography>
+                  <Typography style={classes.relatedAdsBody}>
+                    Rent Count: 34 Times
+                  </Typography>
+                </Grid>
+              </Grid>
+              ) : ""
+            )) : <div></div>
+          }
         </List>
       </Box>
     </>

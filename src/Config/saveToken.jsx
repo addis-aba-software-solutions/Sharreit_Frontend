@@ -1,5 +1,6 @@
 import keys from './keys'
 
 export default (token) => {
-    sessionStorage.setItem(keys['TOKEN'], token)
+    localStorage.clear()
+    localStorage.setItem(keys['TOKEN'], token)
 }

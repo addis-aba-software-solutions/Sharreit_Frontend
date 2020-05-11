@@ -1,4 +1,4 @@
-exports.fields = {
+export const fields = {
     firstName: {
         required: true,
         error: false,
@@ -64,7 +64,7 @@ exports.fields = {
     }
 }
 
-exports.socialMedia = {
+export const socialMedia = {
     telegram: {
         required: true,
         error: false,
@@ -84,7 +84,7 @@ exports.socialMedia = {
     }
 }
 
-exports.personalDetails = {
+export const personalDetails = {
     phoneNumber: {
         required: true,
         error: false,
@@ -104,6 +104,6 @@ exports.personalDetails = {
     }
 }
 
-exports.options = {
+export const options = {
     country: ['US', 'UK']
 }

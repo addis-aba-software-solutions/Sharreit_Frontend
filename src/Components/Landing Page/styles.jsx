@@ -4,37 +4,35 @@ import homeImage from "../../Assets/Rentalhouse.jpg";
 
 const classes = {
   root: {
-    marginLeft: 30,
-    marginRight: 30,
-    backgroundColor: "#F3FCF4",
-    padding: 15,
-    height: 1150,
+    height: 'auto',
   },
   footerLayer: {
     marginLeft: 30,
     marginRight: 30,
-    backgroundColor: "#F3FCF4",
+    backgroundColor: "#D6DADC",
     padding: 15,
     height: "auto",
   },
   container: {
-    paddingLeft: 30,
+    // paddingLeft: 30,
     paddingRight: 30,
   },
   button: {
-    backgroundColor: "#008060",
-    color: "#FFFFFF",
+    color: "#1081D1",
+    backgroundColor: "#FFFFFF",
     padding: 10,
+    paddingLeft: 40,
+    paddingRight: 40
   },
   Headertext2: {
-    color: "#42474C",
+    color: "#FFFFFF",
     marginTop: 5,
     fontSize: 13,
     fontWeight: 20,
     spacing: 2,
   },
   Headertext1: {
-    color: "#42474C",
+    color: "#FFFFFF",
     marginTop: 5,
     fontSize: 13,
     fontWeight: 40,
@@ -44,11 +42,11 @@ const classes = {
     marginLeft: 60,
   },
   expand: {
-    color: "#42474C",
+    color: "#FFFFFF",
   },
   body_One: {
     fontSize: 50,
-    color: "#008060",
+    color: "#1081D1",
     fontWeight: 1000,
     paddingLeft: 100,
     animation: `pop-in ${easings.easeInOutBack} 2000ms forwards`,
@@ -57,7 +55,7 @@ const classes = {
     animation: `pop-in ${easings.easeInOutBack} 2500ms forwards`,
 
     fontSize: 50,
-    color: "#004C3F",
+    color: "#083991",
     fontWeight: 1000,
     paddingLeft: 100,
   },
@@ -94,10 +92,10 @@ const classes = {
     paddingTop: 20,
     shadowOpacity: 9,
     elevation: 10,
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
   },
   body_Three_Header: {
-    color: "#008060",
+    color: "#1081D1",
     fontSize: 18,
     animation: `pop-in ${easings.easeInOutBack} 1000ms forwards`,
   },
@@ -111,12 +109,10 @@ const classes = {
     animation: `pop-in ${easings.easeOutExpo} 5000ms forwards`,
   },
   cars: {
-    // animation: animations.slideIn,
-
     animation: `pop-in ${easings.easeOutExpo} 2000ms forwards`,
     height: "auto",
     width: 550,
-    marginLeft: 500,
+    marginLeft: 615,
     marginRight: 500,
     borderRadius: 5,
     backgroundColor: "#FFF8F6",
@@ -146,7 +142,8 @@ const classes = {
   carsother: {
     // animation: animations.slideIn,
     animation: `pop-in ${easings.easeOutExpo} 2000ms forwards`,
-    height: "auto",
+    height: 700,
+
     width: 550,
     marginBottom: 100,
     borderRadius: 5,
@@ -176,8 +173,15 @@ const classes = {
     fontWeight: 600,
   },
   Logo: {
-    height: 40,
-    width: 80,
+    height: 50,
+    width: 100,
+    marginTop: 20,
+    marginLeft: 80
+  },
+
+  user_name: {
+    color: "#000",
+    marginTop: 11,
   },
 };
 
