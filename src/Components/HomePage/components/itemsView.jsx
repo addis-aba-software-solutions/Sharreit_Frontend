@@ -16,7 +16,7 @@ const classes = {
     paddingRight: 30,
     maxHeight: 860,
     overflow: "auto",
-
+    maxWidth: "150%"
     // backgroundColor: '#FFFFFF'
   },
   card: {

@@ -19,25 +19,35 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard() {
+export default function MediaCard({ picture, title, price }) {
   const classes = useStyles();
+  
+  React.useState(() => {
+    if (typeof title === "string")
+      console.log(title)
+  }, [title])
+  
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={Image}
+          image={picture}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Title Goes Here
+            {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Price/Day: 200$
+            {
+              price.length > 0 ? "Price/Day:" + price : ""
+            }
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Rent Count: 300 Times
+            {
+              price.length > 0 ? "Rent Count: 300 Times" : "" 
+            }
           </Typography>
         </CardContent>
       </CardActionArea>

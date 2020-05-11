@@ -26,5 +26,15 @@ const classes = {
     fontSize: 14,
     fontWeight: 600,
   },
+
+  popover: {
+    width: 240,
+    height: 300,
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    flexWrap: "wrap"
+  }
+
 };
 export default classes;

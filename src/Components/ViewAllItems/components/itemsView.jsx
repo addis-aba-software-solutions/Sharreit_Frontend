@@ -64,10 +64,12 @@ export default class ItemsView extends React.Component {
 
   async componentDidMount() {
     this.setState({ waitingContent: this.preLoaders() })
-    const { status, data } = await fetchItemsBySubCategory(this.props.category, this.props.subCategory)
-    if (status === statusCodes.SUCCESS) {
-      const { posts } = data
-      this.mapItems(posts)
+    if (!this.props.DO_NOT_LOAD) {
+      const { status, data } = await fetchItemsBySubCategory(this.props.category, this.props.subCategory)
+      if (status === statusCodes.SUCCESS) {
+        const { posts } = data
+        this.mapItems(posts)
+      }
     }
   }
 
