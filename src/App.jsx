@@ -14,8 +14,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path={routes.Home} component={HomePage} exact />
-        <Route path={routes.root} component={LandingPage} exact />
+        <Route path={routes.root} component={HomePage} exact />
+        <Route path={routes.about} component={LandingPage} exact />
         <Route path={routes.signIn} component={SignIn} exact />
         <Route path={routes.category} component={CategoryPage} exact />
         <Route path={routes.registration} component={Registration} exact />

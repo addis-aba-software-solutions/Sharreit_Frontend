@@ -1,12 +1,21 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 import HomePageHeader from "./components/HomePageHeader";
+import ItemsView from "./components/itemsView"
 
-export default function Landing() {
+export default function Landing({ history }) {
+  const [state, setState] = React.useState({
+    category: "", subCategory: ""
+  })
+
+  assignCategory = () => {
+
+  }
+
   return (
     <>
       <HomePageHeader />
-      <Typography>hello there</Typography>
+      <ItemsView history={history} category={state.category} subCategory={state.subCategory} />
     </>
-  );
+  )
 }
