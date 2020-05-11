@@ -10,6 +10,11 @@ import {
 import HomePageHeader from "./components/HomePageHeader";
 import classes from "./styles";
 import AllItems from "./components/itemView";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import { ListItemIcon, ListItemText } from "@material-ui/core";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
 export default function Landing() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,9 +26,18 @@ export default function Landing() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  function generate(element) {
+    return [0, 1, 2].map((value) =>
+      React.cloneElement(element, {
+        key: value,
+      })
+    );
+  }
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+
+  const [dense, setDense] = React.useState(false);
 
   return (
     <>
@@ -36,14 +50,13 @@ export default function Landing() {
         <Button onClick={handleClick} style={classes.Headertext2}>
           <Grid item>product Sharing</Grid>
         </Button>
-        <Button style={classes.Headertext2}>
+        <Button onClick={handleClick} style={classes.Headertext2}>
           <Grid item>service Sharing</Grid>
         </Button>
-        <Button style={classes.Headertext2}>
+        <Button onClick={handleClick} style={classes.Headertext2}>
           <Grid item>Digital Sharing</Grid>
         </Button>
       </Grid>
-
 
       <Box style={classes.root}>
         <Grid container spacing={2} xs={12}>
@@ -106,7 +119,13 @@ export default function Landing() {
           horizontal: "center",
         }}
       >
-        <AllItems />
+        <List dense={dense}>
+          {generate(
+            <ListItem>
+              <ListItemText primary="YOU LAZY ASS NIGGRO!!!" />
+            </ListItem>
+          )}
+        </List>
       </Popover>
     </>
   );
