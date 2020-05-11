@@ -17,8 +17,9 @@ import useStyles from "./HeaderStyles";
 import Logo from "../../../Assets/Group.svg";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import routes from "../../../Config/routes"
 
-export default function HomePageHeader() {
+export default ({ history }) => {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,6 +34,11 @@ export default function HomePageHeader() {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+
+
+  const routeChange = (link) => {
+    history.push(link)
+  }
 
   return (
     <Box position="static" className={classes.appbar}>
@@ -107,7 +113,7 @@ export default function HomePageHeader() {
             </Button>
           </Grid>
           <Grid item>
-            <Button className={classes.Headertext1}>
+            <Button className={classes.Headertext1} onClick={() => routeChange(routes.signIn)}>
               <Grid className={classes.tt} item>
                 Log in
               </Grid>

@@ -54,7 +54,6 @@ export default ({ history }) => {
       }
     }
     update()
-    console.log("updated")
   });
 
   const handleClick = (event) => {
@@ -80,7 +79,7 @@ export default ({ history }) => {
   return (
     <>
       <AppBar position="fixed">
-        <HomePageHeader />
+        <HomePageHeader history={history} />
       </AppBar>
       <Box style={classes.bodySpacer} />
 
