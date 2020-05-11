@@ -1,6 +1,7 @@
 import { REPO_ADDRESS } from "./config";
 
 export default {
+  Home: "/HomePage",
   root:  "/",
   signIn:  "/signIn",
   category:  "/CategoryPage",
@@ -8,4 +9,5 @@ export default {
   addItem:  "/AddItem",
   singleItem: "/SingleItem",
   AllItems:  "/AllItems",
+
 };
