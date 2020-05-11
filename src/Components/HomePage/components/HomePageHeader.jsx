@@ -17,7 +17,7 @@ import useStyles from "./HeaderStyles";
 import Logo from "../../../Assets/Group.svg";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
- 
+
 export default function HomePageHeader() {
   const classes = useStyles();
 
