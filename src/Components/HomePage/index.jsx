@@ -30,31 +30,31 @@ export default ({ history }) => {
   
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  React.useEffect(() => {
-    setState({ ...state, loaded: false })
-    const update = async () => {
-      if (state.category.length > 0) {
-        const { status, data } = await fetchItemsByCategory(state.category, state.subCategory)
-        if (status === statusCodes.SUCCESS) {
-          var { posts } = data
-          const fetchedItems = posts.map((item, index) => (
-              <AllItems id={item.id} title={item.post.title} picture={item.post.postImage[0]} price={item.post.price} key={index} />
-          ))
-          setState({ ...state, content: fetchedItems })
-        }
-      } else {
-        const { status, data } = await fetchAllItems()
-        if (status === statusCodes.SUCCESS) {
-          var { posts } = data
-          const fetchedItems = posts.map((item, index) => (
-              <AllItems id={item.id} title={item.post.title} picture={item.post.postImage[0]} price={item.post.price} key={index} />
-          ))
-          setState({ ...state, content: fetchedItems })
-        }
-      }
-    }
-    update()
-  });
+  // React.useEffect(() => {
+  //   setState({ ...state, loaded: false })
+  //   const update = async () => {
+  //     if (state.category.length > 0) {
+  //       const { status, data } = await fetchItemsByCategory(state.category, state.subCategory)
+  //       if (status === statusCodes.SUCCESS) {
+  //         var { posts } = data
+  //         const fetchedItems = posts.map((item, index) => (
+  //             <AllItems id={item.id} title={item.post.title} picture={item.post.postImage[0]} price={item.post.price} key={index} />
+  //         ))
+  //         setState({ ...state, content: fetchedItems })
+  //       }
+  //     } else {
+  //       const { status, data } = await fetchAllItems()
+  //       if (status === statusCodes.SUCCESS) {
+  //         var { posts } = data
+  //         const fetchedItems = posts.map((item, index) => (
+  //             <AllItems id={item.id} title={item.post.title} picture={item.post.postImage[0]} price={item.post.price} key={index} />
+  //         ))
+  //         setState({ ...state, content: fetchedItems })
+  //       }
+  //     }
+  //   }
+  //   update()
+  // });
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -63,6 +63,7 @@ export default ({ history }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   function generate(element) {
     return [0, 1, 2].map((value) =>
       React.cloneElement(element, {
@@ -96,7 +97,7 @@ export default ({ history }) => {
       </Grid>
 
       <Box style={classes.root}>
-        <ItemsView history={history} category={state.category} subCategory={state.subCategory} style={{ width: "150%" }} />
+        <ItemsView history={history} category={state.category} subCategory={state.subCategory} />
       </Box>
 
       <Popover

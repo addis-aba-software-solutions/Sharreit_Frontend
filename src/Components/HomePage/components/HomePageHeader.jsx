@@ -94,7 +94,7 @@ export default ({ history }) => {
 
         <Grid container className={classes.appbarRightSide} spacing={4} xs={4}>
           <Grid item> 
-            <Button className={classes.Headertext1}>
+            <Button className={classes.Headertext1} onClick={() => routeChange(routes.addItem)}>
               <Grid container spacing={1}>
                 <Grid item className={classes.expand}>
                   <CameraAltIcon fontSize="large" />
@@ -106,7 +106,7 @@ export default ({ history }) => {
             </Button>
           </Grid>
           <Grid item>
-            <Button className={classes.Headertext1}>
+            <Button className={classes.Headertext1} onClick={() => routeChange(routes.about)}>
               <Grid className={classes.tt} item>
                 About Sharreit
               </Grid>
@@ -120,7 +120,7 @@ export default ({ history }) => {
             </Button>
           </Grid>
           <Grid item>
-            <Button className={classes.Headertext1}>
+            <Button className={classes.Headertext1} onClick={() => routeChange(routes.registration)}>
               <Grid className={classes.tt} item>
                 Sign Up
               </Grid>

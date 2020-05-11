@@ -66,6 +66,7 @@ export default class ItemsView extends React.Component {
     this.setState({ waitingContent: this.preLoaders() })
     //const { status, data } = await fetchItemsBySubCategory(this.props.category, this.props.subCategory)
     const { status, data } = await fetchAllItems()
+    console.log("Here")
     if (status === statusCodes.SUCCESS) {
       const { posts } = data
       this.mapItems(posts)
