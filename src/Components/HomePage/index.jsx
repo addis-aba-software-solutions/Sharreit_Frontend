@@ -66,7 +66,7 @@ export default ({ history }) => {
   const preLoaders = (amount) => {
     const loadingContent = Array(amount).fill("").map(item => (
       <AllItems picture={preLoaderImage} title={"Loading"} price="" />
-    ))
+    )) 
     return (
       <div style={{ display: "flex", flexDirection: "row" }}>
         {loadingContent}
