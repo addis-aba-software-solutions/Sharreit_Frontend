@@ -8,7 +8,7 @@ export default function Landing({ history }) {
     category: "", subCategory: ""
   })
 
-  assignCategory = () => {
+  const assignCategory = () => {
 
   }
 

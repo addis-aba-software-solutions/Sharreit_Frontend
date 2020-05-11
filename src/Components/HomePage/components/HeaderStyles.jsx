@@ -3,6 +3,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   appbar: {
     backgroundColor: "#1081D1",
+    paddingBottom: 20
   },
   Logo: {
     height: 70,
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   search: {
     padding: 10,
     position: "relative",
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: 20,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.25),
@@ -57,11 +58,13 @@ const useStyles = makeStyles((theme) => ({
   Headertext2: {
     color: "#FFFFFF",
     fontSize: 16,
-    fontWeight: 600,
+    paddingLeft: 40,
+    paddingRight: 40,
+
   },
   Headertext1: {
     color: "#FFFFFF",
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 600,
   },
   HeaderSecondRow: {
@@ -69,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   tt: {
-      marginTop: 5
+    marginTop: 5,
   },
 }));
 
