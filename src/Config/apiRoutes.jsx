@@ -6,5 +6,6 @@ export const routes = {
     fetchAllItems: API_BASE_URL + "/items",
     fetchSingleItem: API_BASE_URL + "/item",
     addItem: API_BASE_URL + "/posts",
-    getUser: API_BASE_URL + "/getuser"
+    getUser: API_BASE_URL + "/getuser",
+    getItemsBySubCategory: API_BASE_URL + "/item-by-category"
 }

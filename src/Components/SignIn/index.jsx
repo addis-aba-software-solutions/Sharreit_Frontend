@@ -25,14 +25,21 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <b>Sharreit PLC</b> {new Date().getFullYear()}
+      <b>Sharreit :</b> {new Date().getFullYear()}
       {"."}
     </Typography>
   );
 }
 
-export default function SignIn({ history }) {
+export default ({ history }) => {
   const classes = useStyles();
+  var token = ""
+
+  React.useEffect(() => {
+    if (localStorage[keys['TOKEN']]) {
+      history.push(routes.root)
+    }
+  }, [])
 
   const [state, setState] = React.useState({
     email: "",
@@ -64,7 +71,8 @@ export default function SignIn({ history }) {
       setLoading(true)
       const { data } = await signIn(state.email, state.password)
       if (data.token !== "") {
-        sessionStorage.setItem(keys['TOKEN'], data.token)
+        localStorage.clear()
+        localStorage.setItem(keys['TOKEN'], data.token)
         history.push(routes.root)
       }
     }
@@ -151,12 +159,15 @@ export default function SignIn({ history }) {
                     variant="contained"
                     className={classes.submit}
                     onClick={handleClick}
+                    // href="/CategoryPage"
                   >
                     Sign In
                   </Button>
                 )
+                
               }
             </Grid>
+
             <Grid container>
               <Grid item xs>
                 <Link className={classes.primary} href="#" variant="caption">

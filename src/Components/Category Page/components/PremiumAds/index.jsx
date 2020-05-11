@@ -51,7 +51,7 @@ const classes = {
 };
 
 export default () => (
-  <Carousel autoPlay infiniteLoop>
+  <Carousel autoPlay infiniteLoop showThumbs={false}>
     <Card>
       <Grid style={classes.imageContainer} container xs={12}>
         <Grid item xs={6}>

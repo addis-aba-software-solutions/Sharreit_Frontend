@@ -61,21 +61,34 @@ export const options = {
 }
 
 export const categories = [
-    "Products", "Services", "Digital"
+    "Product Sharing",
+    "Services Sharing",
+    "Digital Sharing",
 ]
-
+  
 export const subCategories = {
     [categories[0]]: [
-        "Textbooks", "Power Tools", "Music Instruments", "Photography / Videography Instruments",
-        "Luggage", "Camping Gear", "Pool Supplies", "Construction Equipments", "Farming Equipments",
-        "Ladder", "Office Space", "Storage Space"
+        "Textbooks",
+        "Power Tools",
+        "Music Instruments",
+        "Luggage",
+        "Camping Gear", 
+        "Construction Equipments",
+        "Farming Equipments",
+        "Ladder",
+        "Office Space",
+        "Storage Space",
+        "Photography / Videography",
     ],
 
     [categories[1]]: [
-        "Nanny", "Tutors", "Music Tutors", "Personal Trainer", "Personal Drivers", "Cleaners"
+        "Nanny",
+        "Tutors",
+        "Music Tutors",
+        "Personal Trainer",
+        "Personal Drivers",
+        "Cleaners",
     ],
 
-    [categories[2]]: [
-        "Season Tickets", "Subscription Services"
-    ]
-}
+    [categories[2]]: ["Season Tickets", "Subscription Services"],
+};

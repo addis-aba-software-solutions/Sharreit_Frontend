@@ -5,6 +5,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import fetchAllItems from '../functions/fetchAllItems'
+import fetchItemsBySubCategory from '../functions/fetchItemsBySubCategory'
 import { statusCodes } from '../../../Config/config'
 import preLoader from '../../../Assets/circle_loading_1.gif'
 import routes from '../../../Config/routes'
@@ -57,13 +58,13 @@ export default class ItemsView extends React.Component {
   gotoSingleItem(id) {
     this.props.history.push({
       pathname: routes.singleItem,
-      state: { id },
+      state: { id, category: this.props.category, subCategory: this.props.subCategory },
     })
   }
 
   async componentDidMount() {
     this.setState({ waitingContent: this.preLoaders() })
-    const { status, data } = await fetchAllItems()
+    const { status, data } = await fetchItemsBySubCategory(this.props.category, this.props.subCategory)
     if (status === statusCodes.SUCCESS) {
       const { posts } = data
       this.mapItems(posts)
@@ -126,13 +127,13 @@ export default class ItemsView extends React.Component {
     return (
       <Box style={classes.root}>
         <List>
-        <Grid container xs={12} spacing={5}>
-          
           {
-            this.state.loading? this.state.waitingContent : this.state.content
+            this.state.content.length && !this.state.loading === 0? ( <Typography variant="h4">No items in this category</Typography> ) : (
+            <Grid container xs={12} spacing={5}>
+              {this.state.loading? this.state.waitingContent : this.state.content}
+            </Grid>
+            )
           }
-
-        </Grid>
         </List>
       </Box>
     );

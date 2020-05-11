@@ -6,11 +6,11 @@ import { Divider, Grid, Typography } from "@material-ui/core";
 import Filter from "./components/filter";
 import ItemsView from "./components/itemsView";
 
-export default function ViewAllItems({ history }) {
+export default function ViewAllItems({ history, location }) {
   return (
     <>
       <div style={classes.appbarShift}>
-        <Header />
+        <Header history={history} />
       </div>
       <main style={classes.root}>
         <Grid container xs={12}>
@@ -21,9 +21,9 @@ export default function ViewAllItems({ history }) {
           </Grid>
           <Grid item xs={9}>
             <Typography style={classes.headers}>
-              Category Descreption Goes Here
+              {location.state.category}
             </Typography>
-            <ItemsView history={history} />
+            <ItemsView history={history} category={location.state.category} subCategory={location.state.subCategory} />
           </Grid>
         </Grid>
       </main>

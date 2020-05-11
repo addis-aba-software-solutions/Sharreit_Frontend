@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import { Add, Done } from "@material-ui/icons";
 import useStyles from "./styles";
-import { fields, options, categories, subCategories  } from "./data";
+import { fields, options, categories, subCategories } from "./data";
 import Header from "../Headers&Footers/Header";
 import addItem from "./functions/addItem"
 import { statusCodes } from '../../Config/config'
@@ -104,16 +104,19 @@ const AddItem = ({ history }) => {
   const handleClick = async () => {
     const result = checkForm();
     if (result) {
-      const { status } = await addItem(state, productImages)
+      const { status, data } = await addItem(state, productImages)
       if (status === statusCodes.SUCCESS_CREATED) {
-        history.push(routes.singleItem)
+        history.push({
+          pathname: routes.singleItem,
+          state: { id: data.postId }
+        })
       }
     }
   };
 
   return (
     <Grid>
-      <Header />
+      <Header history={history} />
       <Box className={classes.rooot}>
         <Card className={classes.root}>
           <CardContent>

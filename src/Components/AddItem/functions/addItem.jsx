@@ -18,6 +18,9 @@ const addItem = async (data, files) => {
         formData.append("img" + index, item)
     })
 
+    console.log(data)
+    console.log(files)
+
     return await sendFormData(routes.addItem, formData)
 }
 

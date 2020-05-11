@@ -23,12 +23,12 @@ const styles = {
   },
 };
 
-export default function categoriesCard({ type }) {
+export default function categoriesCard({ type, gotoViewItem }) {
   return (
     <Grid container xs={12} spacing={3} display>
       {subCategories[categories[type]].map((item, index) => (
         <Grid item xs={2}>
-          <Card style={styles.root} onClick={() => alert("hell")}>
+          <Card style={styles.root} onClick={() => gotoViewItem(index)}>
             <Grid container xs={12}>
               <Grid item xs={12} align="center" style={styles.padding}>
                 <img

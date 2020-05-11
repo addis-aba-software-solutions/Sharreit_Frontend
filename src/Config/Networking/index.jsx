@@ -1,5 +1,4 @@
 import keys from '../keys'
-import axios from 'axios'
 
 export const sendGetRequest = async (url) => {
     const requestOptions = {
@@ -13,22 +12,23 @@ export const sendGetRequest = async (url) => {
 }
 
 export const sendGetRequestWithToken = async (url) => {
-    const bearer = "Bearer " + sessionStorage.getItem(keys['TOKEN'])
+    const bearer = "Bearer " + localStorage.getItem(keys['TOKEN'])
     const requestOptions = {
         method: "GET",
         headers: {
-            'Authorization': "Bearer " + bearer
+            'Authorization': bearer
         }
     }
     const response = await fetch(url, requestOptions)
     const fetchedData = await response.json()
+    
     return {
         status: response.status, data: fetchedData
     }
 }
 
 export const sendGetRequestWithParam = async (url, param) => {
-    const bearer = "Bearer " + sessionStorage.getItem(keys['TOKEN'])
+    const bearer = "Bearer " + localStorage.getItem(keys['TOKEN'])
     const requestOptions = {
         method: "GET",
         headers: {
@@ -36,6 +36,21 @@ export const sendGetRequestWithParam = async (url, param) => {
         }
     }
     const response = await fetch(url + `?${param.key}=${param.value}`, requestOptions)
+    const fetchedData = await response.json()
+    return {
+        status: response.status, data: fetchedData
+    }
+}
+
+export const sendGetRequestWithCustomParam = async (url, param) => {
+    const bearer = "Bearer " + localStorage.getItem(keys['TOKEN'])
+    const requestOptions = {
+        method: "GET",
+        headers: {
+            'Authorization': "Bearer " + bearer
+        }
+    }
+    const response = await fetch(url + param, requestOptions)
     const fetchedData = await response.json()
     return {
         status: response.status, data: fetchedData
@@ -72,7 +87,7 @@ export const sendPostRequestWithToken = async (url, data) => {
 }
 
 export const sendFormData = async (url,  formData) => {
-    const bearer = "Bearer " + sessionStorage.getItem(keys['TOKEN'])
+    const bearer = "Bearer " + localStorage.getItem(keys['TOKEN'])
     var requestOptions = {
         method: "POST",
         headers: {
@@ -82,6 +97,7 @@ export const sendFormData = async (url,  formData) => {
     }
 
     const response = await fetch(url, requestOptions)
+    console.log(response)
     const fetchedData = await response.json()
     return {
         status: response.status, data: fetchedData
