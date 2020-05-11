@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core";
 import HomePageHeader from "./components/HomePageHeader";
 import ItemsView from "./components/itemsView"
-import AllItems from "./components/itemView"
 import classes from './styles'
 import { fetchAllItems } from "./functions/fetchItems"
 import fetchItemsByCategory from "../ViewAllItems/functions/fetchItemsBySubCategory"
@@ -17,6 +16,12 @@ import { statusCodes } from "../../Config/config"
 import PreLoaders from "../ViewAllItems/components/itemsView"
 import preLoaderImage from "../../Assets/circle_loading_1.gif"
 import { subCategories } from "./data"
+import AllItems from "./components/itemView";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import { ListItemIcon, ListItemText } from "@material-ui/core";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 
 export default ({ history }) => {
   const [state, setState] = React.useState({
@@ -59,22 +64,18 @@ export default ({ history }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  function generate(element) {
+    return [0, 1, 2].map((value) =>
+      React.cloneElement(element, {
+        key: value,
+      })
+    );
+  }
+ 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const preLoaders = (amount) => {
-    const loadingContent = Array(amount).fill("").map(item => (
-      <AllItems picture={preLoaderImage} title={"Loading"} price="" />
-    )) 
-    return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        {loadingContent}
-      </div>
-    )
-  }
-
-  const waitingContent = preLoaders(5)
+  const [dense, setDense] = React.useState(false);
 
   return (
     <>
@@ -87,14 +88,13 @@ export default ({ history }) => {
         <Button onClick={handleClick} style={classes.Headertext2}>
           <Grid item>product Sharing</Grid>
         </Button>
-        <Button style={classes.Headertext2}>
+        <Button onClick={handleClick} style={classes.Headertext2}>
           <Grid item>service Sharing</Grid>
         </Button>
-        <Button style={classes.Headertext2}>
+        <Button onClick={handleClick} style={classes.Headertext2}>
           <Grid item>Digital Sharing</Grid>
         </Button>
       </Grid>
-
 
       <Box style={classes.root}>
         <ItemsView history={history} category={state.category} subCategory={state.subCategory} style={{ width: "150%" }} />
@@ -114,11 +114,13 @@ export default ({ history }) => {
           horizontal: "center",
         }}
       >
-        <div style={classes.popover}>
-          {subCategories["Product Sharing"].map(item => (
-            <div style={{ width: "100%", padding: 10 }}>{item}</div>
-          ))}
-        </div>
+        <List dense={dense}>
+          {generate(
+            <ListItem>
+              <ListItemText primary="YOU LAZY ASS NIGGRO!!!" />
+            </ListItem>
+          )}
+        </List>
       </Popover>
     </>
   )
