@@ -34,7 +34,7 @@ export default function HomePageHeader() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search Shareit"
+              placeholder="Search Sharreit"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -60,7 +60,7 @@ export default function HomePageHeader() {
           <Grid item>
             <Button className={classes.Headertext1}>
               <Grid className={classes.tt} item>
-                About
+                About Sharreit
               </Grid>
             </Button>
           </Grid>
@@ -79,22 +79,6 @@ export default function HomePageHeader() {
             </Button>
           </Grid>
         </Grid>
-      </Grid>
-      <Grid
-        xs={12}
-        align="center"
-        className={classes.HeaderSecondRow}
-        spacing={5}
-      >
-        <Button className={classes.Headertext2}>
-          <Grid item>product Sharing</Grid>
-        </Button>
-        <Button className={classes.Headertext2}>
-          <Grid item>service Sharing</Grid>
-        </Button>
-        <Button className={classes.Headertext2}>
-          <Grid item>Digital Sharing</Grid>
-        </Button>
       </Grid>
     </Box>
   );

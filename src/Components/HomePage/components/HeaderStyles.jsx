@@ -3,7 +3,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   appbar: {
     backgroundColor: "#1081D1",
-    paddingBottom: 20,
+    paddingBottom: 20
   },
   Logo: {
     height: 70,
@@ -60,10 +60,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     paddingLeft: 40,
     paddingRight: 40,
+
   },
   Headertext1: {
     color: "#FFFFFF",
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 600,
   },
   HeaderSecondRow: {
