@@ -2,15 +2,14 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   appbar: {
-    backgroundColor: "#1081D1",
-    paddingBottom: 20
+    backgroundColor: "#F3FCF4",
+    paddingBottom: 20,
   },
   Logo: {
     height: 70,
     width: 140,
   },
   LogoContainer: {
-    backgroundColor: "#FFFFFF",
     borderRadius: 7,
     //   marginRight: 1
   },
@@ -21,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 10,
     position: "relative",
     borderRadius: 20,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: "#D1D8DD",
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: "#FFFFFF",
     },
     marginLeft: 0,
     width: "100%",
@@ -42,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 7,
   },
   inputRoot: {
-    color: "inherit",
+    color: "#7d7d7d",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -52,18 +51,18 @@ const useStyles = makeStyles((theme) => ({
     width: 900,
   },
   appbarRightSide: {
-    paddingLeft: 30,
+    paddingLeft: 20,
     marginTop: 5,
+    padding: 5,
   },
   Headertext2: {
-    color: "#FFFFFF",
+    color: "#1081D1",
     fontSize: 16,
     paddingLeft: 40,
     paddingRight: 40,
-
   },
   Headertext1: {
-    color: "#FFFFFF",
+    color: "#1081D1",
     fontSize: 14,
     fontWeight: 600,
   },

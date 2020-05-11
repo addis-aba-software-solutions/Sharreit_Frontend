@@ -12,7 +12,7 @@ const classes = {
     paddingTop: 20,
     paddingBottom: 20,
 
-    backgroundColor: '#1081D1'
+    backgroundColor: '#F3FCF4'
   },
   Headertext2: {
     color: "#FFFFFF",

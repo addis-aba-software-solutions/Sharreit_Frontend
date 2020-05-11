@@ -25,7 +25,7 @@ const CategoriesView = ({ location, history }) => {
         <HomePageHeader history={history} />
         <Box style={{ height: 80 }} />
         <Grid xs={12} align="center">
-          <BreadCrumps />
+          {/* <BreadCrumps /> */}
         </Grid>
         <PremiumAds />
         <Typography style={classes.Headertext2} glutterBottom>

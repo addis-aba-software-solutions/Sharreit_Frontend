@@ -44,7 +44,7 @@ const classes = {
     animation: `pop-in ${easings.easeOutExpo} 2000ms forwards`,
   },
   sliderButton: {
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
     color: "#FFFFFF",
     marginTop: 10,
   },

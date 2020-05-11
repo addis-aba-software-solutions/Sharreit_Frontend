@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
     backgroundColor: "#F3FCF4",
   },
   active: {
-    color: "#008060",
+    color: "#1081D1",
   },
   paperContainer: {
     backgroundColor: "#F3FCF4",
@@ -49,7 +49,7 @@ export default makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
     height: 60,
     width: 60,
   },
@@ -57,13 +57,11 @@ export default makeStyles((theme) => ({
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-
   submit: {
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
     color: "#FFFFFF",
     margin: theme.spacing(3, 0, 2),
   },
-
   addressText: {
     fontSize: 20,
     fontWeight: 750,

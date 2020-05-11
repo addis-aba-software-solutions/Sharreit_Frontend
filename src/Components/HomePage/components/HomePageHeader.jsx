@@ -84,19 +84,6 @@ export default ({ history }) => {
               />
             </div>
           </Grid>
-          <Grid item xs={1} align="left" className={classes.searchContainer}>
-            <Button
-              variant="contained"
-              style={{
-                padding: 15,
-                borderRadius: 20,
-                backgroundColor: '#083991',
-                color: '#FFFFFF'
-              }}
-            >
-              GO
-            </Button>
-          </Grid>
         </Grid>
 
         <Grid container className={classes.appbarRightSide} spacing={4} xs={4}>
