@@ -26,9 +26,12 @@ import { categories, subCategories } from "./data"
 
 export default ({ history }) => {
   const [state, setState] = React.useState({
-    category: "", subCategory: "", content: [], loaded: false
-  })
-  
+    category: "",
+    subCategory: "",
+    content: [],
+    loaded: false,
+  });
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (category) => {
@@ -49,7 +52,7 @@ export default ({ history }) => {
       })
     );
   }
- 
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
@@ -101,5 +104,5 @@ export default ({ history }) => {
         </List>
       </Popover>
     </>
-  )
-}
+  );
+};
