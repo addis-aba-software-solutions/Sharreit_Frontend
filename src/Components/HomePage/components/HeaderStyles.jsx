@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   LogoContainer: {
     backgroundColor: "#FFFFFF",
+    borderRadius: 7,
     //   marginRight: 1
   },
   searchContainer: {
@@ -47,13 +48,28 @@ const useStyles = makeStyles((theme) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
+    width: 900,
+  },
+  appbarRightSide: {
+    paddingLeft: 30,
+    marginTop: 5,
+  },
+  Headertext2: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: 600,
+  },
+  Headertext1: {
+    color: "#FFFFFF",
+    fontSize: 16,
+    fontWeight: 600,
+  },
+  HeaderSecondRow: {
+    paddingTop: 20,
+  },
+
+  tt: {
+      marginTop: 5
   },
 }));
 
