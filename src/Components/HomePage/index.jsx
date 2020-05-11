@@ -114,11 +114,7 @@ export default ({ history }) => {
         }}
       >
         <List dense={dense}>
-          {generate(
-            <ListItem>
-              <ListItemText primary="YOU LAZY ASS NIGGRO!!!" />
-            </ListItem>
-          )}
+          <h1>Working</h1>
         </List>
       </Popover>
     </>

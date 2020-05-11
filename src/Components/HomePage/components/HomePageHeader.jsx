@@ -93,7 +93,7 @@ export default ({ history }) => {
         </Grid>
 
         <Grid container className={classes.appbarRightSide} spacing={4} xs={4}>
-          <Grid item>
+          <Grid item> 
             <Button className={classes.Headertext1}>
               <Grid container spacing={1}>
                 <Grid item className={classes.expand}>
