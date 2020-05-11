@@ -110,7 +110,7 @@ export default ({ history }) => {
               <Grid className={classes.tt} item>
                 About Sharreit
               </Grid>
-            </Button> 
+            </Button>
           </Grid>
           <Grid item>
             <Button className={classes.Headertext1} onClick={() => routeChange(routes.signIn)}>
