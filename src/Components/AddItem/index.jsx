@@ -387,7 +387,10 @@ const AddItem = ({ history }) => {
               </FormHelperText>
             </FormControl>
             <br />
-            <div className={classes.footerButtons}>
+
+
+              <Grid item xs={12} align='center'>
+
               <Box boxShadow={8} width={150} className={classes.boxButton}>
                 {!loading ? (
                   <Button
@@ -395,15 +398,15 @@ const AddItem = ({ history }) => {
                     className={classes.postButton}
                     onClick={handleClick}
                   >
-                    <Typography className={classes.postButtonText}>
                       POST
-                    </Typography>
                   </Button>
                 ) : (
                   <LoadingContent primary="Uploading your post" />
                 )}
               </Box>
-            </div>
+
+              </Grid>
+
           </CardContent>
         </Card>
       </Box>
