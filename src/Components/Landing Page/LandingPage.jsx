@@ -58,7 +58,11 @@ class LandingPage extends React.Component {
     return (
       <>
         <Box style={classes.root}>
+          <AppBar>
+
           <HomePageHeader history={this.props.history} />
+          </AppBar>
+
           {/* End of AppBar Portion ? */}
           <Box
             style={{

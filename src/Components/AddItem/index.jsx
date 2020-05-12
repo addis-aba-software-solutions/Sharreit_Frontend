@@ -14,17 +14,18 @@ import {
   Button,
   Grid,
   Backdrop,
-  CircularProgress
+  CircularProgress,
+  AppBar,
 } from "@material-ui/core";
 import { Add, Done } from "@material-ui/icons";
 import useStyles from "./styles";
 import { fields, options, categories, subCategories } from "./data";
 import Header from "../Headers&Footers/Header";
-import addItem from "./functions/addItem"
-import { statusCodes } from '../../Config/config'
-import routes from '../../Config/routes'
-import HomePageHeader from "../HomePage/components/HomePageHeader"
-import LoadingContent from "../LoadingContent"
+import addItem from "./functions/addItem";
+import { statusCodes } from "../../Config/config";
+import routes from "../../Config/routes";
+import HomePageHeader from "../HomePage/components/HomePageHeader";
+import LoadingContent from "../LoadingContent";
 
 const AddItem = ({ history }) => {
   const classes = useStyles();
@@ -37,12 +38,12 @@ const AddItem = ({ history }) => {
     price: "",
     location: "",
     terms_and_conditions: "",
-    item_images: ["", "", "", ""]
+    item_images: ["", "", "", ""],
   });
 
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
-  const [productImages, setProductImages] = React.useState([])
+  const [productImages, setProductImages] = React.useState([]);
 
   const [text, setText] = React.useState({
     title: fields.title,
@@ -56,15 +57,15 @@ const AddItem = ({ history }) => {
     item_images: fields.item_images,
   });
 
-  const [showSub, setShowSub] = React.useState(false)
+  const [showSub, setShowSub] = React.useState(false);
 
   const handleFile = (event) => {
     const { name, files } = event.target;
     const { item_images } = state;
     item_images[name] = URL.createObjectURL(files[0]);
-    var images = productImages
-    images.push(files[0])
-    setProductImages(images)
+    var images = productImages;
+    images.push(files[0]);
+    setProductImages(images);
     setState({ ...state, item_images });
     if (text.item_images.error) {
       var update = text.item_images;
@@ -76,7 +77,7 @@ const AddItem = ({ history }) => {
     const { name, value } = event.target;
     setState({ ...state, [name.toLocaleLowerCase()]: value });
     if (name.toLocaleLowerCase() === "category" && value !== "") {
-      setShowSub(true)
+      setShowSub(true);
     }
   };
 
@@ -112,21 +113,28 @@ const AddItem = ({ history }) => {
   const handleClick = async () => {
     const result = checkForm();
     if (result) {
-      setLoading(true)
-      const { status, data } = await addItem(state, productImages)
+      setLoading(true);
+      const { status, data } = await addItem(state, productImages);
       if (status === statusCodes.SUCCESS_CREATED) {
         history.push({
           pathname: routes.singleItem,
-          state: { id: data.postId }
-        })
+          state: { id: data.postId },
+        });
       }
     }
   };
 
   return (
     <Grid className={classes.rooot}>
-      <HomePageHeader history={history} />
-      <Box>
+      <AppBar>
+        <HomePageHeader history={history} />
+      </AppBar>
+      <Box />
+      <Box
+        style={{
+          paddingTop: 100,
+        }}
+      >
         <Card className={classes.root}>
           <CardContent>
             <div className={classes.image_icons}>
@@ -273,7 +281,11 @@ const AddItem = ({ history }) => {
                     : text.category.helperText}
                 </FormHelperText>
               </FormControl>
-              <FormControl variant="outlined" className={classes.singularField} style={{ display: showSub? "flex" : "none" }}>
+              <FormControl
+                variant="outlined"
+                className={classes.singularField}
+                style={{ display: showSub ? "flex" : "none" }}
+              >
                 <InputLabel htmlFor="sub-category">Sub-Category</InputLabel>
                 <Box boxShadow={1} width={250} className={classes.box}>
                   <Select
@@ -289,9 +301,11 @@ const AddItem = ({ history }) => {
                     error={text.sub_category.error}
                   >
                     <option aria-label="None" value="" />
-                    {!showSub ? "" : subCategories[state.category].map((subCategory) => (
-                      <option value={subCategory}>{subCategory}</option>
-                    ))}
+                    {!showSub
+                      ? ""
+                      : subCategories[state.category].map((subCategory) => (
+                          <option value={subCategory}>{subCategory}</option>
+                        ))}
                   </Select>
                 </Box>
                 <FormHelperText error={text.sub_category.error}>
@@ -384,18 +398,11 @@ const AddItem = ({ history }) => {
                     <Typography className={classes.postButtonText}>
                       POST
                     </Typography>
-                  </Button>) : (
+                  </Button>
+                ) : (
                   <LoadingContent primary="Uploading your post" />
                 )}
               </Box>
-              <div className={classes.boost}>
-                <IconButton className={classes.boostButton}>
-                  <Done />
-                </IconButton>
-                <Typography className={classes.boostText}>
-                  Boost this item
-                </Typography>
-              </div>
             </div>
           </CardContent>
         </Card>
