@@ -34,6 +34,10 @@ const classes = {
     justifyContent: "flex-start",
     alignItems: "center",
     flexWrap: "wrap"
+  },
+
+  listItem: {
+    padding: 10
   }
 
 };

@@ -15,7 +15,8 @@ const classes = {
     paddingLeft: 30,
     paddingRight: 30,
     maxHeight: 860,
-    overflow: "auto",
+    overflow: "hidden",
+    flexWrap: "wrap",
     maxWidth: "150%"
     // backgroundColor: '#FFFFFF'
   },
@@ -47,7 +48,9 @@ export default class ItemsView extends React.Component {
     this.state = {
       loading: true,
       waitingContent: [],
-      content: []
+      content: [],
+      fetchedCategories: false,
+      subCategory: null
     }
 
     this.preLoaders = this.preLoaders.bind(this)
@@ -63,13 +66,27 @@ export default class ItemsView extends React.Component {
   }
 
   async componentDidMount() {
-    this.setState({ waitingContent: this.preLoaders() })
-    //const { status, data } = await fetchItemsBySubCategory(this.props.category, this.props.subCategory)
-    const { status, data } = await fetchAllItems()
-    console.log("Here")
-    if (status === statusCodes.SUCCESS) {
-      const { posts } = data
-      this.mapItems(posts)
+    if (this.props.category.length === 0) {
+      this.setState({ waitingContent: this.preLoaders() })
+      const { status, data } = await fetchAllItems()
+      if (status === statusCodes.SUCCESS) {
+        const { posts } = data
+        this.mapItems(posts)
+      }
+    }
+  }
+
+  async componentDidUpdate () {
+    if (this.props.category.length > 0 && this.props.subCategory !== this.state.subCategory) {
+      if (!this.props.fetchedCategories) {
+        const { status, data } = await fetchItemsBySubCategory(this.props.category, this.props.subCategory)
+        if (status === statusCodes.SUCCESS) {
+          this.setState({ loading: true })
+          this.setState({ fetchedCategories: true, subCategory: this.props.subCategory })
+          const { posts } = data
+          this.mapItems(posts)
+        }
+      }
     }
   }
 

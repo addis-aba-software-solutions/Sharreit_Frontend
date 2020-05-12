@@ -15,13 +15,14 @@ import fetchItemsByCategory from "../ViewAllItems/functions/fetchItemsBySubCateg
 import { statusCodes } from "../../Config/config"
 import PreLoaders from "../ViewAllItems/components/itemsView"
 import preLoaderImage from "../../Assets/circle_loading_1.gif"
-import { subCategories } from "./data"
 import AllItems from "./components/itemView";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import { ListItemIcon, ListItemText } from "@material-ui/core";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import routes from "../../Config/routes"
+import { categories, subCategories } from "./data"
 
 export default ({ history }) => {
   const [state, setState] = React.useState({
@@ -30,34 +31,11 @@ export default ({ history }) => {
   
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  // React.useEffect(() => {
-  //   setState({ ...state, loaded: false })
-  //   const update = async () => {
-  //     if (state.category.length > 0) {
-  //       const { status, data } = await fetchItemsByCategory(state.category, state.subCategory)
-  //       if (status === statusCodes.SUCCESS) {
-  //         var { posts } = data
-  //         const fetchedItems = posts.map((item, index) => (
-  //             <AllItems id={item.id} title={item.post.title} picture={item.post.postImage[0]} price={item.post.price} key={index} />
-  //         ))
-  //         setState({ ...state, content: fetchedItems })
-  //       }
-  //     } else {
-  //       const { status, data } = await fetchAllItems()
-  //       if (status === statusCodes.SUCCESS) {
-  //         var { posts } = data
-  //         const fetchedItems = posts.map((item, index) => (
-  //             <AllItems id={item.id} title={item.post.title} picture={item.post.postImage[0]} price={item.post.price} key={index} />
-  //         ))
-  //         setState({ ...state, content: fetchedItems })
-  //       }
-  //     }
-  //   }
-  //   update()
-  // });
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (category) => {
+    history.push({
+      pathname: routes.category,
+      state: { type: category }
+    })
   };
 
   const handleClose = () => {
@@ -85,13 +63,13 @@ export default ({ history }) => {
       <Box style={classes.bodySpacer} />
 
       <Grid xs={12} align="center" style={classes.HeaderSecondRow} spacing={5}>
-        <Button onClick={handleClick} style={classes.Headertext2}>
+        <Button onClick={() => handleClick(0)} style={classes.Headertext2}>
           <Grid item>product Sharing</Grid>
         </Button>
-        <Button onClick={handleClick} style={classes.Headertext2}>
+        <Button onClick={() => handleClick(1)} style={classes.Headertext2}>
           <Grid item>service Sharing</Grid>
         </Button>
-        <Button onClick={handleClick} style={classes.Headertext2}>
+        <Button onClick={() => handleClick(2)} style={classes.Headertext2}>
           <Grid item>Digital Sharing</Grid>
         </Button>
       </Grid>
@@ -115,7 +93,11 @@ export default ({ history }) => {
         }}
       >
         <List dense={dense}>
-          <h1>Working</h1>
+          {subCategories[categories[0]].map((item, index) => (
+            <ListItemText primary={item} key={index} style={classes.listItem} onClick={() => {
+              setState({ ...state, category: categories[0], subCategory: item})
+            }} />
+          ))}
         </List>
       </Popover>
     </>

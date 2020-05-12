@@ -42,12 +42,19 @@ export const sendGetRequestWithParam = async (url, param) => {
     }
 }
 
-export const sendGetRequestWithCustomParam = async (url, param) => {
+export const sendGetRequestWithCustomParam = async (url, param, requireToken = true) => {
     const bearer = "Bearer " + localStorage.getItem(keys['TOKEN'])
-    const requestOptions = {
-        method: "GET",
-        headers: {
-            'Authorization': "Bearer " + bearer
+    var requestOptions
+    if (requireToken) {
+        requestOptions = {
+            method: "GET",
+            headers: {
+                'Authorization': "Bearer " + bearer
+            }
+        }
+    } else {
+        requestOptions = {
+            method: "GET"
         }
     }
     const response = await fetch(url + param, requestOptions)
