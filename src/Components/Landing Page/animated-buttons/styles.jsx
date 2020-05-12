@@ -60,6 +60,11 @@ export default makeStyles((theme) => ({
     fontWeight: 10,
     fontSize: 18,
   },
+
+  sideNote: {
+    display: "flex"
+  },
+
   large: {
     width: 80,
     height: 80,

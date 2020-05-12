@@ -104,8 +104,8 @@ export const sendFormData = async (url,  formData) => {
     }
 
     const response = await fetch(url, requestOptions)
-    console.log(response)
     const fetchedData = await response.json()
+    console.log(fetchedData)
     return {
         status: response.status, data: fetchedData
     }

@@ -1,4 +1,4 @@
 import { routes } from '../../../Config/apiRoutes'
-import { sendGetRequestWithToken } from '../../../Config/Networking'
+import { sendGetRequestWithParam } from '../../../Config/Networking'
 
-export default async () => await sendGetRequestWithToken(routes.getUser)
+export default async (token) => await sendGetRequestWithParam(routes.fetchSingleItem, { key: "id", value: token })

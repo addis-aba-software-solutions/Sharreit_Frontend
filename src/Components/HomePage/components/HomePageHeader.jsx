@@ -96,7 +96,7 @@ export default ({ history }) => {
 
         <Grid container display='flex' justify='flex-end' className={classes.appbarRightSide} spacing={4} xs={4}>
             {
-              auth && !hideShare ? (
+              (
                 <Grid item> 
                   <Button className={classes.Headertext1} onClick={() => routeChange(routes.addItem)}>
                     <Grid container spacing={1}>
@@ -109,10 +109,10 @@ export default ({ history }) => {
                     </Grid>
                   </Button>
                 </Grid>
-              ) : ""
+              )
             }
           {
-            hideAbout? "" : (
+            (
               <Grid item>
                 <Button className={classes.Headertext1} onClick={() => routeChange(routes.about)}>
                   <Grid className={classes.tt} item>

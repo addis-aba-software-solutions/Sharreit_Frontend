@@ -6,6 +6,8 @@ import Something from "../../../../Assets/bulldozer.jpg";
 import House from "../../../../Assets/Rental_house.jpg";
 import StarIcon from "@material-ui/icons/Star";
 import { easings } from "react-animation";
+import fetchItems from "./functions/fetchItems"
+import { statusCodes } from "../../../../Config/config"
 
 const classes = {
   image: {
@@ -50,312 +52,146 @@ const classes = {
   },
 };
 
-export default () => (
-  <Carousel autoPlay infiniteLoop showThumbs={false}>
-    <Card>
-      <Grid style={classes.imageContainer} container xs={12}>
-        <Grid item xs={6}>
-          <img style={classes.image} alt="" src={Something} />
-        </Grid>
 
-        <Grid item xs={6} style={classes.sliderContainer}>
-          <Box style={classes.sliderTextContainer}>
-            <Grid container>
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" />
-            </Grid>
-            <Typography align="left" style={classes.sliderTitle}>
-              House For Rent
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Price :</b> 877$/Week
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Condition :</b> New
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Description</b>
-            </Typography>
+const PremiumAds = ({ posts }) => {
+  const [state, setState] = React.useState({
+    content: []
+  })
+  const [loaded, setLoaded] = React.useState(false)
+  React.useEffect(async () => {
+    const { status, data } = await fetchItems()
+    if (status === statusCodes.SUCCESS) {
+      const { posts } = data
+      var LIMIT = 6
+      var fetchedItems = posts.map((item, index) => (
+        <Ad key={index}
+          title={item.post.title}
+          condition={item.post.condition}
+          description={item.post.description}
+          id={item.id}
+          image={item.post.postImage[0]}
+          price={item.post.price}
+        />
+      ))
+      
+      var sliced = fetchedItems.slice(0, LIMIT)
+      setState({ ...state, content: sliced })
+    }
+  }, [])
 
-            <Box style={classes.sliderBody2Container}>
-              <Typography align="left" style={classes.sliderBody2}>
-                As the year is coming to a close, we at JJ’s List have been
-                reaching out to you, our reviewers, to find out how your
-                experience on our site has been. One of the things we heard back
-                was that it’s not always obvious to everyone how to write a
-                useful review.
+
+  const Ad = ({ title, description, price, image, condition, id }) => {
+    return (
+      <Card>
+        <Grid style={classes.imageContainer} container xs={12}>
+          <Grid item xs={6}>
+            <img style={classes.image} alt="" src={image} />
+          </Grid>
+  
+          <Grid item xs={6} style={classes.sliderContainer}>
+            <Box style={classes.sliderTextContainer}>
+              <Grid container>
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" />
+              </Grid>
+              <Typography align="left" style={classes.sliderTitle}>
+                {title}
               </Typography>
-            </Box>
-
-            <Button
-              variant="contained"
-              size="large"
-              style={classes.sliderButton}
-              startIcon={<StarIcon />}
-            >
-              Check It Out
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-    </Card>
-
-    <Card>
-      <Grid container xs={12}>
-        <Grid style={classes.imageContainer} item xs={6}>
-          <img style={classes.image} alt="" src={House} />
-        </Grid>
-
-        <Grid item xs={6} style={classes.sliderContainer}>
-          <Box style={classes.sliderTextContainer}>
-            <Grid container>
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" />
-            </Grid>
-            <Typography align="left" style={classes.sliderTitle}>
-              House For Rent
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Price :</b> 877$/Week
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Condition :</b> New
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Description</b>
-            </Typography>
-
-            <Box style={classes.sliderBody2Container}>
-              <Typography align="left" style={classes.sliderBody2}>
-                As the year is coming to a close, we at JJ’s List have been
-                reaching out to you, our reviewers, to find out how your
-                experience on our site has been. One of the things we heard back
-                was that it’s not always obvious to everyone how to write a
-                useful review.
+              <Typography align="left" style={classes.sliderBody}>
+                <b>Price :</b> {price}$/Week
               </Typography>
-            </Box>
-
-            <Button
-              variant="contained"
-              size="large"
-              style={classes.sliderButton}
-              startIcon={<StarIcon />}
-            >
-              Check It Out
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-    </Card>
-
-    <Card>
-      <Grid container xs={12}>
-        <Grid style={classes.imageContainer} item xs={6}>
-          <img style={classes.image} alt="" src={Something} />
-        </Grid>
-
-        <Grid item xs={6} style={classes.sliderContainer}>
-          <Box style={classes.sliderTextContainer}>
-            <Grid container>
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" />
-            </Grid>
-            <Typography align="left" style={classes.sliderTitle}>
-              House For Rent
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Price :</b> 877$/Week
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Condition :</b> New
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Description</b>
-            </Typography>
-
-            <Box style={classes.sliderBody2Container}>
-              <Typography align="left" style={classes.sliderBody2}>
-                As the year is coming to a close, we at JJ’s List have been
-                reaching out to you, our reviewers, to find out how your
-                experience on our site has been. One of the things we heard back
-                was that it’s not always obvious to everyone how to write a
-                useful review.
+              <Typography align="left" style={classes.sliderBody}>
+                <b>Condition :</b>{condition}
               </Typography>
-            </Box>
-
-            <Button
-              variant="contained"
-              size="large"
-              style={classes.sliderButton}
-              startIcon={<StarIcon />}
-            >
-              Check It Out
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-    </Card>
-
-    <Card>
-      <Grid container xs={12}>
-        <Grid style={classes.imageContainer} item xs={6}>
-          <img style={classes.image} alt="" src={House} />
-        </Grid>
-
-        <Grid item xs={6} style={classes.sliderContainer}>
-          <Box style={classes.sliderTextContainer}>
-            <Grid container>
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" />
-            </Grid>
-            <Typography align="left" style={classes.sliderTitle}>
-              House For Rent
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Price :</b> 877$/Week
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Condition :</b> New
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Description</b>
-            </Typography>
-
-            <Box style={classes.sliderBody2Container}>
-              <Typography align="left" style={classes.sliderBody2}>
-                As the year is coming to a close, we at JJ’s List have been
-                reaching out to you, our reviewers, to find out how your
-                experience on our site has been. One of the things we heard back
-                was that it’s not always obvious to everyone how to write a
-                useful review.
+              <Typography align="left" style={classes.sliderBody}>
+                <b>Description</b>
               </Typography>
+  
+              <Box style={classes.sliderBody2Container}>
+                <Typography align="left" style={classes.sliderBody2}>
+                  {description}
+                </Typography>
+              </Box>
+  
+              <Button
+                variant="contained"
+                size="large"
+                style={classes.sliderButton}
+                startIcon={<StarIcon />}
+                onClick={() => alert(id)}
+              >
+                Check It Out
+              </Button>
             </Box>
-
-            <Button
-              variant="contained"
-              size="large"
-              style={classes.sliderButton}
-              startIcon={<StarIcon />}
-            >
-              Check It Out
-            </Button>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Card>
+      </Card>
+    )
+  }
 
+  const ads = Array(6).fill("").map(item => (
     <Card>
-      <Grid container xs={12}>
-        <Grid style={classes.imageContainer} item xs={6}>
-          <img style={classes.image} alt="" src={Something} />
-        </Grid>
-
-        <Grid item xs={6} style={classes.sliderContainer}>
-          <Box style={classes.sliderTextContainer}>
-            <Grid container>
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" />
-            </Grid>
-            <Typography align="left" style={classes.sliderTitle}>
-              House For Rent
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Price :</b> 877$/Week
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Condition :</b> New
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Description</b>
-            </Typography>
-
-            <Box style={classes.sliderBody2Container}>
-              <Typography align="left" style={classes.sliderBody2}>
-                As the year is coming to a close, we at JJ’s List have been
-                reaching out to you, our reviewers, to find out how your
-                experience on our site has been. One of the things we heard back
-                was that it’s not always obvious to everyone how to write a
-                useful review.
+        <Grid style={classes.imageContainer} container xs={12}>
+          <Grid item xs={6}>
+            <img style={classes.image} alt="" src={Something} />
+          </Grid>
+  
+          <Grid item xs={6} style={classes.sliderContainer}>
+            <Box style={classes.sliderTextContainer}>
+              <Grid container>
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" style={classes.rating} />
+                <StarIcon fontSize="large" />
+              </Grid>
+              <Typography align="left" style={classes.sliderTitle}>
+                House For Rent
               </Typography>
-            </Box>
-
-            <Button
-              variant="contained"
-              size="large"
-              style={classes.sliderButton}
-              startIcon={<StarIcon />}
-            >
-              Check It Out
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-    </Card>
-
-    <Card>
-      <Grid container xs={12}>
-        <Grid style={classes.imageContainer} item xs={6}>
-          <img style={classes.image} alt="" src={House} />
-        </Grid>
-
-        <Grid item xs={6} style={classes.sliderContainer}>
-          <Box style={classes.sliderTextContainer}>
-            <Grid container>
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" style={classes.rating} />
-              <StarIcon fontSize="large" />
-            </Grid>
-            <Typography align="left" style={classes.sliderTitle}>
-              House For Rent
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Price :</b> 877$/Week
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Condition :</b> New
-            </Typography>
-            <Typography align="left" style={classes.sliderBody}>
-              <b>Description</b>
-            </Typography>
-
-            <Box style={classes.sliderBody2Container}>
-              <Typography align="left" style={classes.sliderBody2}>
-                As the year is coming to a close, we at JJ’s List have been
-                reaching out to you, our reviewers, to find out how your
-                experience on our site has been. One of the things we heard back
-                was that it’s not always obvious to everyone how to write a
-                useful review.
+              <Typography align="left" style={classes.sliderBody}>
+                <b>Price :</b> 877$/Week
               </Typography>
+              <Typography align="left" style={classes.sliderBody}>
+                <b>Condition :</b> New
+              </Typography>
+              <Typography align="left" style={classes.sliderBody}>
+                <b>Description</b>
+              </Typography>
+  
+              <Box style={classes.sliderBody2Container}>
+                <Typography align="left" style={classes.sliderBody2}>
+                  As the year is coming to a close, we at JJ’s List have been
+                  reaching out to you, our reviewers, to find out how your
+                  experience on our site has been. One of the things we heard back
+                  was that it’s not always obvious to everyone how to write a
+                  useful review.
+                </Typography>
+              </Box>
+  
+              <Button
+                variant="contained"
+                size="large"
+                style={classes.sliderButton}
+                startIcon={<StarIcon />}
+              >
+                Check It Out
+              </Button>
             </Box>
-
-            <Button
-              variant="contained"
-              size="large"
-              style={classes.sliderButton}
-              startIcon={<StarIcon />}
-            >
-              Check It Out
-            </Button>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </Card>
-  </Carousel>
-);
+      </Card>
+  ))
+
+
+
+  return (
+      <Carousel autoPlay infiniteLoop showThumbs={false}>
+        {state.content}
+      </Carousel>
+  )
+}
+
+export default PremiumAds

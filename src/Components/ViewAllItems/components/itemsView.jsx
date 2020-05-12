@@ -9,6 +9,7 @@ import fetchItemsBySubCategory from '../functions/fetchItemsBySubCategory'
 import { statusCodes } from '../../../Config/config'
 import preLoader from '../../../Assets/circle_loading_1.gif'
 import routes from '../../../Config/routes'
+import fetchMyItems from '../functions/fetchMyItems'
 
 const classes = {
   root: {
@@ -68,6 +69,8 @@ export default class ItemsView extends React.Component {
         const { posts } = data
         this.mapItems(posts)
       }
+    } else if (this.props.myItems) {
+      const response = await fetchMyItems()
     }
   }
 

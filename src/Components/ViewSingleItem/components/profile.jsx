@@ -16,6 +16,7 @@ import Telegram from "../../../Assets/TelegramSVG.svg";
 import fetchProfile from '../functions/fetchProfile'
 import { statusCodes } from '../../../Config/config'
 import preLoader from '../../../Assets/circle_loading_2.gif'
+import routes from '../../../Config/routes'
 
 const classes = {
   root: {
@@ -50,27 +51,34 @@ const classes = {
   },
 };
 
-export default function Profile() {
+export default ({ history, id }) => {
   const [user, setUser] = React.useState({})
   const [loaded, setLoaded] = React.useState(false)
 
   React.useEffect(async () => {
-    const { data, status } = await fetchProfile()
+    const { data, status } = await fetchProfile(id)
     if (status === statusCodes.SUCCESS) {
-      const { credentials } = data
+      const { postedBy } = data
       var fetchedUser = {
-        firstName: credentials.firstName,
-        lastName: credentials.lastName,
-        imageUrl: credentials.imageUrl,
-        createdAt: credentials.createdAt,
-        facebook: credentials.facebook,
-        telegram: credentials.telegram,
-        whatsapp: credentials.whatsapp
+        firstName: postedBy.firstName,
+        lastName: postedBy.lastName,
+        imageUrl: postedBy.imageUrl,
+        createdAt: postedBy.createdAt,
+        facebook: postedBy.facebook,
+        telegram: postedBy.telegram,
+        whatsapp: postedBy.whatsapp
       }
       setUser(fetchedUser)
       setLoaded(true)
     }
   }, [])
+
+  const routeChange = (link) => {
+    history.push({
+      pathname: link,
+      state: { myItems: true }
+    })
+  }
 
   return (
     <Paper style={classes.root}>
@@ -148,7 +156,9 @@ export default function Profile() {
           <Divider />
 
           <Grid align='center' style={{ marginTop: 10 }} xs={12}>
-                <Button style={classes.button, {display: loaded? "" : "none"} }  size='small' variant="contained">
+                <Button style={classes.button, {display: loaded? "" : "none"} }  size='small' variant="contained"
+                  onClick={() => routeChange(routes.AllItems)}
+                >
                       Your Items
                 </Button>
             </Grid>

@@ -6,13 +6,11 @@ import { Grid, Divider, Typography, Box, AppBar } from "@material-ui/core";
 import Profile from "./components/profile";
 import RelatedAds from "./components/relatedAds";
 import ItemView from "./components/itemView";
-import fetchItem from "./functions/fetchItem";
-import preLoaderImage from "../../Assets/circle_loading_1.gif";
 import PremiumAds from "../Category Page/components/PremiumAds";
 import HomePageHeader from "../HomePage/components/HomePageHeader";
 
-export default ({ history, location }) => {
-  const [postID, setID] = React.useState(location.state.id);
+export default ({ history }) => {
+  const [postID, setID] = React.useState(history.location.state.id);
 
   const changeID = (id) => {
     setID(id);
@@ -32,7 +30,7 @@ export default ({ history, location }) => {
           </Grid>
           <Grid item xs={3} style={classes.divider} align="center">
             <Grid item>
-              <Profile />
+              <Profile history={history} id={postID} />
             </Grid>
             <Box
               style={{
@@ -49,8 +47,8 @@ export default ({ history, location }) => {
               <RelatedAds
                 changeID={changeID}
                 id={postID}
-                category={location.state.category}
-                subCategory={location.state.subCategory}
+                category={history.location.state.category}
+                subCategory={history.location.state.subCategory}
               />
             </Grid>
           </Grid>

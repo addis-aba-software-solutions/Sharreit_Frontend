@@ -29,7 +29,7 @@ const CategoriesView = ({ location, history }) => {
         <Grid xs={12} align="center">
           {/* <BreadCrumps /> */}
         </Grid>
-        <PremiumAds />
+        <PremiumAds posts={location.state.posts} />
         <Typography style={classes.Headertext2} glutterBottom>
           {categories[location.state.type]}
         </Typography>

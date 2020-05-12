@@ -30,6 +30,7 @@ export default function ViewAllItems({ history, location }) {
               history={history}
               category={location.state.category}
               subCategory={location.state.subCategory}
+              myItems={location.state.myItems}
             />
           </Grid>
         </Grid>

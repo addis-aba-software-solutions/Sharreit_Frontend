@@ -5,6 +5,9 @@ import FormData from 'form-data'
 const addItem = async (data, files) => {
     var formData = new FormData()
     
+    console.log(data)
+    console.log(files)
+
     formData.append("title", data.title)
     formData.append("condition", data.condition)
     formData.append("description", data.description)

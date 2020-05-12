@@ -78,10 +78,10 @@ const Example = ({ start, amount }) => {
                   <Typography align="left" variant="h6">
                     Volkswaggen
                   </Typography>
-                  <p>
+                  <Typography align="left" variant="caption" className={classes.sideNote}>
                     A cozy family car that will take you anywhere you desire. It will hold upto eight people
                     and will accomodate you in all of your rides.
-                  </p>
+                  </Typography>
                 </div>
               </Fade>
             </div>

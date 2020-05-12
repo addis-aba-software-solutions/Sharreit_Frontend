@@ -37,7 +37,7 @@ export default ({ history }) => {
   const handleClick = (category) => {
     history.push({
       pathname: routes.category,
-      state: { type: category }
+      state: { type: category, posts: state.content }
     })
   };
 
