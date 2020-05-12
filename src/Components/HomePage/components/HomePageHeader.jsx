@@ -86,7 +86,7 @@ export default ({ history }) => {
           </Grid>
         </Grid>
 
-        <Grid container className={classes.appbarRightSide} spacing={4} xs={4}>
+        <Grid container display='flex' justify='flex-end' className={classes.appbarRightSide} spacing={4} xs={4}>
             {
               auth && !hideShare ? (
                 <Grid item> 

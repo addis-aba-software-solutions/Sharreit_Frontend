@@ -51,9 +51,9 @@ const useStyles = makeStyles((theme) => ({
     width: 900,
   },
   appbarRightSide: {
-    paddingLeft: 20,
-    marginTop: 5,
-    padding: 5,
+    paddingRight: 40,
+    marginTop: 1,
+    padding: 2,
   },
   Headertext2: {
     color: "#1081D1",
@@ -66,10 +66,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     fontWeight: 600,
   },
-  HeaderSecondRow: {
-    paddingTop: 20,
-  },
-
   tt: {
     marginTop: 5,
   },

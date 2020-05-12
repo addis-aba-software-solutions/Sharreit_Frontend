@@ -25,16 +25,16 @@ const classes = {
   sliderTitle: {
     fontWeight: 600,
     fontSize: 40,
-    color: "#004C3F",
+    color: "#083991",
   },
   sliderBody: {
     fontSize: 30,
     fontWeight: 10,
-    color: "#004C3F",
+    color: "#1081D1",
   },
   sliderBody2: {
     fontSize: 20,
-    color: "#004C3F",
+    color: "#1081D1",
   },
   rating: {
     color: "#F8E757",
