@@ -3,13 +3,21 @@ import { makeStyles } from "@material-ui/core"
 export default makeStyles((theme) => ({
     rooot: {
         backgroundColor: '#F3FCF4',
-        height: '100vh'
+        height: '100vh',
+        marginTop: "1%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column"
 
     },
     root: {
-        marginTop: '5%',
-        marginLeft: '20%',
+        marginTop: '10%',
         maxWidth: 750,
+        maxHeight: "90%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
     },
 
     image_icons: {

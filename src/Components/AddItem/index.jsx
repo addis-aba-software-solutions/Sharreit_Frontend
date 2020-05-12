@@ -21,12 +21,14 @@ import Header from "../Headers&Footers/Header";
 import addItem from "./functions/addItem"
 import { statusCodes } from '../../Config/config'
 import routes from '../../Config/routes'
+import HomePageHeader from "../HomePage/components/HomePageHeader"
 
 const AddItem = ({ history }) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     title: "",
     condition: "",
+    description: "",
     category: "",
     sub_category: "",
     price: "",
@@ -40,6 +42,7 @@ const AddItem = ({ history }) => {
   const [text, setText] = React.useState({
     title: fields.title,
     condition: fields.condition,
+    description: fields.description,
     category: fields.category,
     sub_category: fields.sub_category,
     price: fields.price,
@@ -115,9 +118,9 @@ const AddItem = ({ history }) => {
   };
 
   return (
-    <Grid>
-      <Header history={history} />
-      <Box className={classes.rooot}>
+    <Grid className={classes.rooot}>
+      <HomePageHeader history={history} />
+      <Box>
         <Card className={classes.root}>
           <CardContent>
             <div className={classes.image_icons}>
@@ -188,6 +191,24 @@ const AddItem = ({ history }) => {
                   {text.title.error
                     ? text.title.errorText
                     : text.title.helperText}
+                </FormHelperText>
+              </FormControl>
+              <FormControl className={classes.singularField}>
+                <Box boxShadow={1} width={250} className={classes.box}>
+                  <TextField
+                    error={text.description.error}
+                    label="Description"
+                    name="description"
+                    onChange={handleChange}
+                    className={classes.controlFields}
+                    required
+                    variant="outlined"
+                  />
+                </Box>
+                <FormHelperText error={text.description.error}>
+                  {text.description.error
+                    ? text.description.errorText
+                    : text.description.helperText}
                 </FormHelperText>
               </FormControl>
               <FormControl variant="outlined" className={classes.singularField}>

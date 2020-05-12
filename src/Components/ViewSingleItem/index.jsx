@@ -9,6 +9,7 @@ import ItemView from "./components/itemView";
 import fetchItem from "./functions/fetchItem";
 import preLoaderImage from "../../Assets/circle_loading_1.gif";
 import PremiumAds from "../Category Page/components/PremiumAds";
+import HomePageHeader from "../HomePage/components/HomePageHeader"
 
 export default ({ history, location }) => {
   const [postID, setID] = React.useState(location.state.id)
@@ -21,7 +22,7 @@ export default ({ history, location }) => {
     <>
     <div style={classes.root}>
       <Grid xs={12} style={classes.appbarShift}>
-        <Header history={history} />
+        <HomePageHeader history={history} />
       </Grid>
       <Grid container xs={12} spacing={3}>
         <Grid item xs={9} style={classes.singleItemView}>

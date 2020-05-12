@@ -18,6 +18,7 @@ import Logo from "../../../Assets/Group.svg";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import routes from "../../../Config/routes"
+import keys from "../../../Config/keys"
 
 export default ({ history }) => {
   const classes = useStyles();
@@ -35,6 +36,12 @@ export default ({ history }) => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
+  const [auth, setAuth] = React.useState(false)
+  const [hideShare, setHide] = React.useState(false)
+  React.useEffect(() => {
+    if (localStorage.getItem(keys['TOKEN'])) setAuth(true)
+    if (history.location.pathname === routes.addItem) setHide(true)
+  })
 
   const routeChange = (link) => {
     history.push(link)
@@ -93,18 +100,22 @@ export default ({ history }) => {
         </Grid>
 
         <Grid container className={classes.appbarRightSide} spacing={4} xs={4}>
-          <Grid item> 
-            <Button className={classes.Headertext1} onClick={() => routeChange(routes.addItem)}>
-              <Grid container spacing={1}>
-                <Grid item className={classes.expand}>
-                  <CameraAltIcon fontSize="large" />
+            {
+              auth && !hideShare ? (
+                <Grid item> 
+                  <Button className={classes.Headertext1} onClick={() => routeChange(routes.addItem)}>
+                    <Grid container spacing={1}>
+                      <Grid item className={classes.expand}>
+                        <CameraAltIcon fontSize="large" />
+                      </Grid>
+                      <Grid className={classes.tt} item>
+                        Share
+                      </Grid>
+                    </Grid>
+                  </Button>
                 </Grid>
-                <Grid className={classes.tt} item>
-                  Share
-                </Grid>
-              </Grid>
-            </Button>
-          </Grid>
+              ) : ""
+            }
           <Grid item>
             <Button className={classes.Headertext1} onClick={() => routeChange(routes.about)}>
               <Grid className={classes.tt} item>
@@ -112,20 +123,28 @@ export default ({ history }) => {
               </Grid>
             </Button>
           </Grid>
-          <Grid item>
-            <Button className={classes.Headertext1} onClick={() => routeChange(routes.signIn)}>
-              <Grid className={classes.tt} item>
-                Log in
+          {
+            auth? "" : (
+              <Grid item>
+                <Button className={classes.Headertext1} onClick={() => routeChange(routes.signIn)}>
+                  <Grid className={classes.tt} item>
+                    Log in
+                  </Grid>
+                </Button>
               </Grid>
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button className={classes.Headertext1} onClick={() => routeChange(routes.registration)}>
-              <Grid className={classes.tt} item>
-                Sign Up
+            )
+          }
+          {
+            auth? "" : (
+              <Grid item>
+                <Button className={classes.Headertext1} onClick={() => routeChange(routes.registration)}>
+                  <Grid className={classes.tt} item>
+                    Sign Up
+                  </Grid>
+                </Button>
               </Grid>
-            </Button>
-          </Grid>
+            )
+          }
         </Grid>
       </Grid>
     </Box>

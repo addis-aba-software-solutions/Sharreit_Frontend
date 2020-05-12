@@ -5,12 +5,13 @@ import classes from "./styles";
 import { Divider, Grid, Typography } from "@material-ui/core";
 import Filter from "./components/filter";
 import ItemsView from "./components/itemsView";
+import HomePageHeader from "../HomePage/components/HomePageHeader"
 
 export default function ViewAllItems({ history, location }) {
   return (
     <>
       <div style={classes.appbarShift}>
-        <Header history={history} />
+        <HomePageHeader history={history} />
       </div>
       <main style={classes.root}>
         <Grid container xs={12}>

@@ -18,7 +18,6 @@ const classes = {
     overflow: "hidden",
     flexWrap: "wrap",
     maxWidth: "150%"
-    // backgroundColor: '#FFFFFF'
   },
   card: {
     padding: 10,

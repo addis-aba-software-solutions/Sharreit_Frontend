@@ -7,7 +7,7 @@ const addItem = async (data, files) => {
     
     formData.append("title", data.title)
     formData.append("condition", data.condition)
-    formData.append("description", data.title)
+    formData.append("description", data.description)
     formData.append("price", data.price)
     formData.append("category", data.category)
     formData.append("subCatagory", data.sub_category)
@@ -17,9 +17,6 @@ const addItem = async (data, files) => {
     files.forEach((item, index) => {
         formData.append("img" + index, item)
     })
-
-    console.log(data)
-    console.log(files)
 
     return await sendFormData(routes.addItem, formData)
 }

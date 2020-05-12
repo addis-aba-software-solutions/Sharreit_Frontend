@@ -13,6 +13,13 @@ export const fields = {
         errorText: "Please select your item condition"
     },
 
+    description: {
+        error: false,
+        required: true,
+        helperText: "Describe the product you're selling",
+        errorText: "Please enter your item description"
+    },
+
     category: {
         error: false,
         required: true,

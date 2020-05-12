@@ -8,6 +8,7 @@ import classes from "./styles";
 import routes from "../../Config/routes";
 import PremiumAds from "./components/PremiumAds";
 import { categories, subCategories } from "./data";
+import HomePageHeader from "../HomePage/components/HomePageHeader"
 
 const CategoriesView = ({ location, history }) => {
   const gotoViewAll = (id) => {
@@ -21,7 +22,7 @@ const CategoriesView = ({ location, history }) => {
   return (
     <>
       <Box style={classes.root}>
-        <Header history={history} />
+        <HomePageHeader history={history} />
         <Box style={{ height: 80 }} />
         <Grid xs={12} align="center">
           <BreadCrumps />
