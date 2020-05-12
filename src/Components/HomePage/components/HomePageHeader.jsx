@@ -127,7 +127,7 @@ export default ({ history }) => {
               <Grid item>
                 <Button className={classes.Headertext1} onClick={logout}>
                     <Grid container spacing={1} className={classes.logout}>
-                      <Grid item className={classes.expand}>
+                      <Grid item>
                         <ExitToAppIcon color="secondary" />
                       </Grid>
                       <Grid item className={classes.center}>
