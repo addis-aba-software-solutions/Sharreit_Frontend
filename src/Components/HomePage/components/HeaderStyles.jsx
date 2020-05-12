@@ -56,10 +56,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 5,
     display: "flex",
     justifyContent: "flex-end",
-    marginRight: 5,
-    //paddingRight: 40,
-    //marginTop: 1,
-    //padding: 2,
+    marginRight: 5
   },
   Headertext2: {
     color: "#1081D1",
