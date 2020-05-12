@@ -8,6 +8,7 @@ import {
   RadioGroup,
   FormControl,
   FormHelperText,
+  Typography
 } from "@material-ui/core";
 import useStyles from "../styles";
 import MuiPhoneNumber from "material-ui-phone-number";
@@ -17,6 +18,11 @@ export default function FinalStep({ form, handleChange }) {
   return (
     <Grid container component="main" className={classes.finalStepsContainer}>
       <form className={classes.finalStepsForm} noValidate>
+
+        <Typography variant='caption' style={{color: '#7d7d7d'}}>
+          Phone Number
+        </Typography>
+
         <FormControl className={classes.finalStepsBirthDay}>
           {/* <MuiPhoneNumber defaultCountry={"us"} onChange={value => handleChange({ target: { name: 'phoneNumber', value } })} /> */}
           <MuiPhoneNumber
@@ -31,7 +37,11 @@ export default function FinalStep({ form, handleChange }) {
           </FormHelperText>
         </FormControl>
         <FormControl component="fieldset">
-          <FormLabel component="legend">Gender</FormLabel>
+          <FormLabel component="legend">
+            <Typography variant='caption'>
+              Gender
+            </Typography>
+          </FormLabel>
           <RadioGroup
             aria-label="gender"
             name="gender"
