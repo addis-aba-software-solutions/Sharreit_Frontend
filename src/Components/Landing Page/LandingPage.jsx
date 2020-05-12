@@ -523,7 +523,7 @@ class LandingPage extends React.Component {
                     display="flex"
                     justify="flex-end"
                     style={{
-                      marginTop: 30,
+                      marginTop: 30
                     }}
                   >
                     <img style={classes.CarImage2} src={ticket} alt="" />
