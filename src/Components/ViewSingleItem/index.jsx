@@ -24,7 +24,6 @@ export default ({ history, location }) => {
       <Grid xs={12} style={classes.appbarShift}>
         <AppBar>
         <HomePageHeader history={history} />
-
         </AppBar>
       </Grid>
       <Grid container xs={12} spacing={3}>
