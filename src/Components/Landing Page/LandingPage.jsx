@@ -475,7 +475,7 @@ class LandingPage extends React.Component {
                 </Grid>
                 {/* Card One Body */}
                 <Grid container xs={12} spacing={2} style={classes.cardOneBody}>
-                  <Grid item xs={6}>
+                  <Grid style={{paddingTop: 80}} item xs={6}>
                     <div>
                       <Typography
                         align="left"
@@ -495,9 +495,7 @@ class LandingPage extends React.Component {
                       </Typography>
                     </div>
                     <div
-                      style={{
-                        paddingTop: 30,
-                      }}
+                        style={{paddingTop: 80}}
                     >
                       <Typography
                         align="left"
