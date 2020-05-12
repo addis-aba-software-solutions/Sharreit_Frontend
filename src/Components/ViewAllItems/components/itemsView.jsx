@@ -130,7 +130,7 @@ export default class ItemsView extends React.Component {
       <Box style={classes.root}>
         <List>
           {
-            this.state.content.length && !this.state.loading === 0? ( <Typography variant="h4">No items in this category</Typography> ) : (
+            this.state.content.length === 0 && !this.state.loading? ( <Typography variant="h4">No items in this category</Typography> ) : (
             <Grid container xs={12} spacing={5}>
               {this.state.loading? this.state.waitingContent : this.state.content}
             </Grid>

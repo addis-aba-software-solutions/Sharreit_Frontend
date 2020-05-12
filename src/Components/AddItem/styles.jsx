@@ -4,7 +4,6 @@ export default makeStyles((theme) => ({
     rooot: {
         backgroundColor: '#F3FCF4',
         height: '100vh',
-        marginTop: "1%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -12,9 +11,9 @@ export default makeStyles((theme) => ({
 
     },
     root: {
-        marginTop: '10%',
+        marginTop: '5%',
         maxWidth: 750,
-        maxHeight: "90%",
+        maxHeight: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center"

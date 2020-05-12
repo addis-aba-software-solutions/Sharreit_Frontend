@@ -4,8 +4,8 @@ const classes = {
       borderRadius: 10,
     },
     image: {
-      //minHeight: 500,
-      //maxHeight: 500,
+      minHeight: 500,
+      maxHeight: 500,
       borderRadius: 10,
       width: "95%"
     },
