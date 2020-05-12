@@ -132,7 +132,7 @@ const AddItem = ({ history }) => {
       <Box />
       <Box
         style={{
-          paddingTop: 100,
+          paddingTop: 50,
         }}
       >
         <Card className={classes.root}>
