@@ -34,7 +34,7 @@ const classes = {
       padding: 10,
     },
     availability: {
-      backgroundColor: "#008060",
+      backgroundColor: "#1081D1",
       padding: 5,
       paddingLeft: 20,
       borderRadius: 10,
@@ -54,10 +54,10 @@ const classes = {
     },
     sendIcon: {
       marginTop: 10,
-      color: "#008060",
+      color: "#1081D1",
     },
     TermAndCondition: {
-      backgroundColor: "#008060",
+      backgroundColor: "#1081D1",
       color: "#FFFFFF",
     },
 }
