@@ -13,6 +13,8 @@ import {
   Box,
   Button,
   Grid,
+  Backdrop,
+  CircularProgress
 } from "@material-ui/core";
 import { Add, Done } from "@material-ui/icons";
 import useStyles from "./styles";
@@ -22,6 +24,7 @@ import addItem from "./functions/addItem"
 import { statusCodes } from '../../Config/config'
 import routes from '../../Config/routes'
 import HomePageHeader from "../HomePage/components/HomePageHeader"
+import LoadingContent from "../LoadingContent"
 
 const AddItem = ({ history }) => {
   const classes = useStyles();
@@ -36,6 +39,8 @@ const AddItem = ({ history }) => {
     terms_and_conditions: "",
     item_images: ["", "", "", ""]
   });
+
+  const [loading, setLoading] = React.useState(false)
 
   const [productImages, setProductImages] = React.useState([])
 
@@ -107,6 +112,7 @@ const AddItem = ({ history }) => {
   const handleClick = async () => {
     const result = checkForm();
     if (result) {
+      setLoading(true)
       const { status, data } = await addItem(state, productImages)
       if (status === statusCodes.SUCCESS_CREATED) {
         history.push({
@@ -369,15 +375,18 @@ const AddItem = ({ history }) => {
             <br />
             <div className={classes.footerButtons}>
               <Box boxShadow={8} width={150} className={classes.boxButton}>
-                <Button
-                  variant="contained"
-                  className={classes.postButton}
-                  onClick={handleClick}
-                >
-                  <Typography className={classes.postButtonText}>
-                    POST
-                  </Typography>
-                </Button>
+                {!loading ? (
+                  <Button
+                    variant="contained"
+                    className={classes.postButton}
+                    onClick={handleClick}
+                  >
+                    <Typography className={classes.postButtonText}>
+                      POST
+                    </Typography>
+                  </Button>) : (
+                  <LoadingContent primary="Uploading your post" />
+                )}
               </Box>
               <div className={classes.boost}>
                 <IconButton className={classes.boostButton}>

@@ -75,20 +75,6 @@ export default class ItemsView extends React.Component {
     }
   }
 
-  async componentDidUpdate () {
-    if (this.props.category.length > 0 && this.props.subCategory !== this.state.subCategory) {
-      if (!this.props.fetchedCategories) {
-        const { status, data } = await fetchItemsBySubCategory(this.props.category, this.props.subCategory)
-        if (status === statusCodes.SUCCESS) {
-          this.setState({ loading: true })
-          this.setState({ fetchedCategories: true, subCategory: this.props.subCategory })
-          const { posts } = data
-          this.mapItems(posts)
-        }
-      }
-    }
-  }
-
   preLoaders = () => {
     const loader = (
       <Grid item>
@@ -147,7 +133,7 @@ export default class ItemsView extends React.Component {
       <Box style={classes.root}>
         <List>
           {
-            this.state.content.length && !this.state.loading === 0? ( <Typography variant="h4">No items in this category</Typography> ) : (
+            this.state.content.length === 0 && !this.state.loading? ( <Typography variant="h4">No items have been posted</Typography> ) : (
             <Grid container xs={12} spacing={5}>
               {this.state.loading? this.state.waitingContent : this.state.content}
             </Grid>

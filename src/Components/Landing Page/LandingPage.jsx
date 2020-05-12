@@ -54,16 +54,6 @@ class LandingPage extends React.Component {
     });
   }
 
-  async componentDidMount() {
-    const token = localStorage.getItem(keys["TOKEN"]);
-    if (typeof token === "string") {
-      const { firstName, lastName } = await fetchUserInfo();
-      localStorage.setItem(keys["FULL_NAME"], firstName + " " + lastName);
-      this.setState({ name: firstName + " " + lastName });
-    }
-    console.log(this.state.name);
-  }
-
   render() {
     return (
       <>

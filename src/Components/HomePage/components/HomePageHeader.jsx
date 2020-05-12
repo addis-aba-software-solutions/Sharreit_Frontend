@@ -36,7 +36,7 @@ export default ({ history }) => {
 
   const logout = () => {
     localStorage.clear()
-    routeChange(routes.Home)
+    routeChange(routes.root)
   }
 
   const open = Boolean(anchorEl);
@@ -126,7 +126,7 @@ export default ({ history }) => {
             auth? (
               <Grid item>
                 <Button className={classes.Headertext1} onClick={logout}>
-                    <Grid container spacing={1} className={classes.center}>
+                    <Grid container spacing={1} className={classes.logout}>
                       <Grid item className={classes.expand}>
                         <ExitToAppIcon color="secondary" />
                       </Grid>

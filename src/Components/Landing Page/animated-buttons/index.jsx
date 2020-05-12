@@ -76,12 +76,11 @@ const Example = ({ start, amount }) => {
               <Fade in={true} timeout={900}>
                 <div className={classes.sideCaption}>
                   <Typography align="left" variant="h6">
-                    ed ut perspiciatis
+                    Volkswaggen
                   </Typography>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam
+                    A cozy family car that will take you anywhere you desire. It will hold upto eight people
+                    and will accomodate you in all of your rides.
                   </p>
                 </div>
               </Fade>

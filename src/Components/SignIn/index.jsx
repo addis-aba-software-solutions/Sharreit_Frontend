@@ -20,6 +20,7 @@ import { fields } from "./data";
 import routes from '../../Config/routes'
 import keys from '../../Config/keys'
 import signIn from './functions/signIn'
+import LoadingContent from "../LoadingContent"
 
 function Copyright() {
   return (
@@ -151,7 +152,7 @@ export default ({ history }) => {
             />
             <Grid xs={12} align="center">
               {
-                loading ? <Typography variant="body1" className={classes.loading}>Please wait for a moment</Typography>
+                loading ? <LoadingContent primary="Signing in" />
                 : (
                   <Button
                     type="submit"

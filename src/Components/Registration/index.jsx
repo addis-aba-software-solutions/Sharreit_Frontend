@@ -22,6 +22,7 @@ import routes from "../../Config/routes";
 import signup from "./functions/signup";
 import { statusCodes } from "../../Config/config";
 import saveToken from "../../Config/saveToken";
+import LoadingContent from "../LoadingContent"
 
 function Copyright() {
   return (
@@ -296,11 +297,7 @@ export default function Registration({ history }) {
               ) : (
                 <React.Fragment>
                   {getStepContent(activeStep)}
-                  {loading ? (
-                    <Typography variant="body1" className={classes.loading}>
-                      Please wait for a moment
-                    </Typography>
-                  ) : (
+                  {loading ? <LoadingContent primary="Signing up" /> : (
                     <div className={classes.buttons}>
                       {activeStep !== 0 && (
                         <Button onClick={handleBack} className={classes.button}>
