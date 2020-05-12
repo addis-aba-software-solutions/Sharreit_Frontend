@@ -38,7 +38,6 @@ export default ({ history, location }) => {
             <Grid item>
               <img src={Logo} style={classes.Logo} alt="" />
             </Grid>
-
           </Grid>
 
           <Grid xs={6} container spacing={4} display="flex" justify="flex-end">

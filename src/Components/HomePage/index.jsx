@@ -65,7 +65,7 @@ export default ({ history }) => {
       </AppBar>
       <Box style={classes.bodySpacer} />
 
-      <Grid xs={12} align="center" style={classes.HeaderSecondRow} spacing={5}>
+      <Grid item align='center' xs={12} align="center" style={classes.HeaderSecondRow}>
         <Button onClick={() => handleClick(0)} style={classes.Headertext2}>
           <Grid item>product Sharing</Grid>
         </Button>
