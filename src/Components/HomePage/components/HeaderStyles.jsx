@@ -75,9 +75,8 @@ const useStyles = makeStyles((theme) => ({
   
   logout: {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 5
+    alignItems: "end",
+    marginTop: 1
   }
 
 }));
