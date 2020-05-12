@@ -460,7 +460,7 @@ class LandingPage extends React.Component {
                 </Grid>
                 <Grid xs={12}>
                   <Typography align="left" style={classes.secondaryContainers1}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    Creating innovations that leverage digital solutions, such as the Internet or mobile phones, to engage communities.
                   </Typography>
                   <Typography
                     align="left"
@@ -469,7 +469,9 @@ class LandingPage extends React.Component {
                       color: "#7D7D7D",
                     }}
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                   Sharing assets - physical, financial, and/or human capital -  
+                    between many, without transferring ownership, via a digital platform
+                    to create economic value for at least two parties.
                   </Typography>
                 </Grid>
                 {/* Card One Body */}
@@ -480,7 +482,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        LOREM IPSUM
+                        Season Tickets
                       </Typography>
                       <Typography
                         align="left"
@@ -490,8 +492,7 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
+                        Share your season tickets with your friends, collegues and loved ones.
                       </Typography>
                     </div>
                     <div
@@ -503,7 +504,7 @@ class LandingPage extends React.Component {
                         align="left"
                         style={classes.secondaryContainers}
                       >
-                        LOREM IPSUM
+                        Streaming Accounts
                       </Typography>
                       <Typography
                         align="left"
@@ -513,31 +514,7 @@ class LandingPage extends React.Component {
                           paddingTop: 10,
                         }}
                       >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                      </Typography>
-                    </div>
-                    <div
-                      style={{
-                        paddingTop: 30,
-                      }}
-                    >
-                      <Typography
-                        align="left"
-                        style={classes.secondaryContainers}
-                      >
-                        LOREM IPSUM
-                      </Typography>
-                      <Typography
-                        align="left"
-                        style={{
-                          fontWeight: 10,
-                          color: "#7D7D7D",
-                          paddingTop: 10,
-                        }}
-                      >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
+                        Share your online streaming accounts with your friends and watch your shows together.
                       </Typography>
                     </div>
                   </Grid>

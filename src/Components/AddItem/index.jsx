@@ -404,9 +404,7 @@ const AddItem = ({ history }) => {
                   <LoadingContent primary="Uploading your post" />
                 )}
               </Box>
-
               </Grid>
-
           </CardContent>
         </Card>
       </Box>
