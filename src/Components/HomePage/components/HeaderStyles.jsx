@@ -3,6 +3,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   appbar: {
     backgroundColor: "#F3FCF4",
+
     paddingBottom: 20,
   },
   Logo: {
