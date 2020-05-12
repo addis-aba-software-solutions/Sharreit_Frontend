@@ -54,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
   appbarRightSide: {
     paddingLeft: 30,
     marginTop: 5,
+    display: "flex",
+    justifyContent: "flex-end",
+    marginRight: 5
   },
   Headertext2: {
     color: "#FFFFFF",
@@ -74,6 +77,13 @@ const useStyles = makeStyles((theme) => ({
   tt: {
     marginTop: 5,
   },
+  
+  center: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  }
+
 }));
 
 export default useStyles;

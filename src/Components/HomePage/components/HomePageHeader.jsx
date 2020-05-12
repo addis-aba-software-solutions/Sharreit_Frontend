@@ -17,6 +17,7 @@ import useStyles from "./HeaderStyles";
 import Logo from "../../../Assets/Group.svg";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 import routes from "../../../Config/routes"
 import keys from "../../../Config/keys"
 
@@ -33,14 +34,21 @@ export default ({ history }) => {
     setAnchorEl(null);
   };
 
+  const logout = () => {
+    localStorage.clear()
+    routeChange(routes.Home)
+  }
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
   const [auth, setAuth] = React.useState(false)
   const [hideShare, setHide] = React.useState(false)
+  const [hideAbout, setHideAbout] = React.useState(false)
   React.useEffect(() => {
     if (localStorage.getItem(keys['TOKEN'])) setAuth(true)
     if (history.location.pathname === routes.addItem) setHide(true)
+    if (history.location.pathname === routes.about) setHideAbout(true)
   })
 
   const routeChange = (link) => {
@@ -116,15 +124,32 @@ export default ({ history }) => {
                 </Grid>
               ) : ""
             }
-          <Grid item>
-            <Button className={classes.Headertext1} onClick={() => routeChange(routes.about)}>
-              <Grid className={classes.tt} item>
-                About Sharreit
-              </Grid>
-            </Button>
-          </Grid>
           {
-            auth? "" : (
+            hideAbout? "" : (
+              <Grid item>
+                <Button className={classes.Headertext1} onClick={() => routeChange(routes.about)}>
+                  <Grid className={classes.tt} item>
+                    About Sharreit
+                  </Grid>
+                </Button>
+              </Grid>
+            )
+          }
+          {
+            auth? (
+              <Grid item>
+                <Button className={classes.Headertext1} onClick={logout}>
+                    <Grid container spacing={1} className={classes.center}>
+                      <Grid item className={classes.expand}>
+                        <ExitToAppIcon color="secondary" />
+                      </Grid>
+                      <Grid item className={classes.center}>
+                        Logout
+                      </Grid>
+                    </Grid>
+                </Button>
+              </Grid>
+            ) : (
               <Grid item>
                 <Button className={classes.Headertext1} onClick={() => routeChange(routes.signIn)}>
                   <Grid className={classes.tt} item>

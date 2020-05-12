@@ -26,6 +26,7 @@ import keys from "../../Config/keys";
 import logout from "../Headers&Footers/functions/logout";
 import ticket from "../../Assets/ticket.jpg";
 import nanny from "../../Assets/nanny.jpg";
+import HomePageHeader from "../HomePage/components/HomePageHeader"
 
 class LandingPage extends React.Component {
   constructor() {
@@ -67,141 +68,7 @@ class LandingPage extends React.Component {
     return (
       <>
         <Box style={classes.root}>
-          <AppBar
-            style={{
-              backgroundColor: "#1081D1",
-            }}
-          >
-            <div style={classes.container}>
-              <Grid container xs={12} display="flex" justify="space-between">
-                <Grid
-                  container
-                  xs={2}
-                  align="right"
-                  style={{ backgroundColor: "#FFFFFF" }}
-                  spacing={3}
-                >
-                  <Grid item>
-                    <img src={Logo} style={classes.Logo} alt="" />
-                  </Grid>
-
-                  {/* <Grid item style={classes.ShareAppPadding}>
-                    <Button style={classes.Headertext1}>
-                      <Grid container>
-                        <Grid item>start</Grid>
-                        <Grid item style={classes.expand}>
-                          <ArrowRightAltIcon fontSize="small" />
-                        </Grid>
-                      </Grid>
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button style={classes.Headertext1}>
-                      <Grid container>
-                        <Grid item>Sell</Grid>
-                        <Grid item style={classes.expand}>
-                          <ExpandMoreIcon fontSize="small" />
-                        </Grid>
-                      </Grid>
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button style={classes.Headertext1}>
-                      <Grid container>
-                        <Grid item>Market</Grid>
-                        <Grid item style={classes.expand}>
-                          <ExpandMoreIcon fontSize="small" />
-                        </Grid>
-                      </Grid>
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button style={classes.Headertext1}>
-                      <Grid container>
-                        <Grid item>Manage</Grid>
-                        <Grid item style={classes.expand}>
-                          <ExpandMoreIcon fontSize="small" />
-                        </Grid>
-                      </Grid>
-                    </Button>
-                  </Grid> */}
-                </Grid>
-
-                <Grid
-                  xs={6}
-                  container
-                  spacing={4}
-                  display="flex"
-                  justify="flex-end"
-                  style={{
-                    padding: 15,
-                  }}
-                >
-                  <Grid item>
-                    <Button style={classes.Headertext1}>
-                      <Grid container>
-                        <Grid item>Pricing</Grid>
-                        <Grid item style={classes.expand}>
-                          <ExpandMoreIcon fontSize="small" />
-                        </Grid>
-                      </Grid>
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button style={classes.Headertext1}>
-                      <Grid container>
-                        <Grid item>Learn</Grid>
-                        <Grid item style={classes.expand}>
-                          <ExpandMoreIcon fontSize="small" />
-                        </Grid>
-                      </Grid>
-                    </Button>
-                  </Grid>
-                  {this.state.name === "" ? (
-                    <Grid item>
-                      <Button
-                        align="right"
-                        variant="contained"
-                        onClick={this.routeChange.bind(this)}
-                        style={classes.button}
-                      >
-                        LOGIN
-                      </Button>
-                    </Grid>
-                  ) : (
-                    ""
-                  )}
-                  <Grid item>
-                    {this.state.name === "" ? (
-                      <Grid item>
-                        <Button style={classes.Headertext1}>
-                          <Grid container>
-                            <Grid item>Categories</Grid>
-                            <Grid item style={classes.expand}>
-                              <ExpandMoreIcon fontSize="small" />
-                            </Grid>
-                          </Grid>
-                        </Button>
-                      </Grid>
-                    ) : (
-                      <Grid container>
-                        <Grid item>
-                          <Typography variant="body1" style={classes.user_name}>
-                            {this.state.name}
-                          </Typography>
-                        </Grid>
-                        <Grid item>
-                          <IconButton onClick={this.goodBye}>
-                            <ExitToAppIcon color="secondary" />
-                          </IconButton>
-                        </Grid>
-                      </Grid>
-                    )}
-                  </Grid>
-                </Grid>
-              </Grid>
-            </div>
-          </AppBar>
+          <HomePageHeader history={this.props.history} />
           {/* End of AppBar Portion ? */}
           <Box
             style={{
