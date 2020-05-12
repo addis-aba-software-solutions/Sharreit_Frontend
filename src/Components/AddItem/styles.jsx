@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core"
 export default makeStyles((theme) => ({
     rooot: {
         backgroundColor: '#F3FCF4',
-        height: '100vh',
+        minHeight: '100vh',
+        height: 'auto',
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -110,10 +111,10 @@ export default makeStyles((theme) => ({
 
     postButton: {
         width: 150,
-        backgroundColor: '#8997e6',
+        backgroundColor: '#1081D1',
         color: '#fff',
         height: 35,
-        borderRadius: 15,
+        borderRadius: 5,
         '&:hover': {
             backgroundColor: '#2238b3'
         }
