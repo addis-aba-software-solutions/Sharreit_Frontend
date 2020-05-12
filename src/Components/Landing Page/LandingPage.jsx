@@ -26,7 +26,7 @@ import keys from "../../Config/keys";
 import logout from "../Headers&Footers/functions/logout";
 import ticket from "../../Assets/ticket.jpg";
 import nanny from "../../Assets/nanny.jpg";
-import HomePageHeader from "../HomePage/components/HomePageHeader"
+import HomePageHeader from "../HomePage/components/HomePageHeader";
 
 class LandingPage extends React.Component {
   constructor() {
@@ -59,8 +59,7 @@ class LandingPage extends React.Component {
       <>
         <Box style={classes.root}>
           <AppBar>
-
-          <HomePageHeader history={this.props.history} />
+            <HomePageHeader history={this.props.history} />
           </AppBar>
 
           {/* End of AppBar Portion ? */}
@@ -316,7 +315,7 @@ class LandingPage extends React.Component {
                 </Grid>
               </Grid>
               <Grid xs={12} container display="flex" justify="flex-end">
-                <Button onClick={() => this.gotoCategory(0)}>
+                <Button  variant='contained' style={{backgroundColor: '#1081D1', color: '#FFFFFF'}} onClick={() => this.gotoCategory(0)}>
                   <Typography variant="caption">
                     See More SHARED PRODUCTS
                   </Typography>
@@ -441,7 +440,7 @@ class LandingPage extends React.Component {
                   </Grid>
                 </Grid>
                 <Grid xs={12} container display="flex" justify="flex-end">
-                  <Button onClick={() => this.gotoCategory(1)}>
+                  <Button  variant='contained' style={{backgroundColor: '#1081D1', color: '#FFFFFF'}} onClick={() => this.gotoCategory(1)}>
                     <Typography variant="caption">
                       see more about Service Sharing
                     </Typography>
@@ -554,7 +553,7 @@ class LandingPage extends React.Component {
                   </Grid>
                 </Grid>
                 <Grid xs={12} container display="flex" justify="flex-end">
-                  <Button onClick={() => this.gotoCategory(2)}>
+                  <Button variant='contained' style={{backgroundColor: '#1081D1', color: '#FFFFFF'}} onClick={() => this.gotoCategory(2)} >
                     <Typography variant="caption">
                       See More ABOUT digital sharing
                     </Typography>
