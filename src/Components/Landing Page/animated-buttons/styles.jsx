@@ -27,10 +27,23 @@ export default makeStyles((theme) => ({
   },
 
   displayCaption: {
+    color: "#7D7D7D",
+    paddingTop: 10,
+    fontWeight: 10,
+    fontSize: 28,
+    paddingBottom: 10,
     transitions: theme.transitions.create(["width", "height"], {
       easing: theme.transitions.easing.easeInOut,
       duration: "1000ms",
     }),
+  },
+
+  secondaryContainers1: {
+    color: "#7D7D7D",
+    paddingTop: 10,
+    fontWeight: 10,
+    fontSize: 28,
+    paddingBottom: 10,
   },
 
   sideCaption: {
@@ -42,6 +55,10 @@ export default makeStyles((theme) => ({
     borderRadius: 12,
     paddingLeft: 10,
     paddingTop: 15,
+    color: "#7D7D7D",
+    paddingTop: 10,
+    fontWeight: 10,
+    fontSize: 18,
   },
   large: {
     width: 80,

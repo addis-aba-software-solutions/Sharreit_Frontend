@@ -3,7 +3,6 @@ import { Grid, Zoom, Typography, Fade, Avatar } from "@material-ui/core";
 import useStyles from "./styles";
 import image from "./img/download.jpg";
 
-
 const Example = ({ start, amount }) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -47,7 +46,7 @@ const Example = ({ start, amount }) => {
     sideNotes[index] = false;
     setNote({ sideNotes });
   };
-  
+
   return (
     <Grid className={classes.root} container>
       <Grid item xs={12} className={classes.root}>
@@ -59,13 +58,16 @@ const Example = ({ start, amount }) => {
               className={classes.container}
             >
               <Zoom in={state.cars[index]} timeout={2000}>
-                
                 {/* <Avatar
                 src={image} className={classes.animated}
                 >
 
                 </Avatar> */}
-                <Avatar alt="Remy Sharp" src={image} className={classes.large} />
+                <Avatar
+                  alt="Remy Sharp"
+                  src={image}
+                  className={classes.large}
+                />
                 {/* <Visibility fontSize='large' style={{
                   marginTop: 45
                 }}/> */}
@@ -73,9 +75,13 @@ const Example = ({ start, amount }) => {
               </Zoom>
               <Fade in={true} timeout={900}>
                 <div className={classes.sideCaption}>
-                  <Typography variant="h6">ed ut perspiciatis</Typography>
+                  <Typography align="left" variant="h6">
+                    ed ut perspiciatis
+                  </Typography>
                   <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam
                   </p>
                 </div>
               </Fade>

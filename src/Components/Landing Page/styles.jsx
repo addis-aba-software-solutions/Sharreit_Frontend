@@ -160,7 +160,7 @@ const classes = {
     animation: `pop-in ${easings.easeOutExpo} 2000ms forwards`,
   },
   FooterContainer: {
-    backgroundColor: "#002E25",
+    backgroundColor: "#083991",
     height: "auto",
     padding: 30,
   },

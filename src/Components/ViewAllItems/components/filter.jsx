@@ -12,7 +12,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-
 const classes = {
   root: {
     padding: 30,
@@ -27,10 +26,10 @@ const classes = {
   },
   formControl: {
     minWidth: "100%",
-    paddingBottom: 20
+    paddingBottom: 20,
   },
   slider: {
-    color: "#008060",
+    color: "#1081D1",
   },
   sliderContainer: {
     padding: 5,
@@ -40,14 +39,13 @@ const classes = {
   },
   sortButton: {
     color: "#FFFFFF",
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
     margin: 5,
   },
 };
 
 export default function Filter() {
   const [age, setAge] = React.useState("");
-
 
   const [value, setValue] = React.useState(30);
 
@@ -67,7 +65,6 @@ export default function Filter() {
     }
   };
 
-
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -78,11 +75,10 @@ export default function Filter() {
         <Typography style={classes.header}>Filter your Search By</Typography>
         <Divider style={classes.spacer} />
         <Grid xs={12}>
-
           <FormControl style={classes.formControl}>
-                  <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-          All Categories
-        </InputLabel>
+            <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+              All Categories
+            </InputLabel>
             <InputLabel id="demo-simple-select-helper-label">
               All Categories
             </InputLabel>
@@ -103,9 +99,9 @@ export default function Filter() {
         </Grid>
         <Grid xs={12}>
           <FormControl style={classes.formControl}>
-          <InputLabel shrink id="demo-simple-select-placeholder-label-label">
-          Sub-Categories
-        </InputLabel>
+            <InputLabel shrink id="demo-simple-select-placeholder-label-label">
+              Sub-Categories
+            </InputLabel>
             <InputLabel id="demo-simple-select-helper-label">
               Sub Categories
             </InputLabel>
@@ -146,7 +142,7 @@ export default function Filter() {
               onChange={handleInputChange}
               onBlur={handleBlur}
             >
-              `{value} KM` Mekakel Minamn
+              `{value} KM`
             </Typography>
           </Grid>
         </Box>
@@ -315,13 +311,10 @@ export default function Filter() {
         <Divider style={classes.spacer} />
 
         <Grid xs={12}>
-          <Button size='large' style={classes.sortButton} variant='contained'>
+          <Button size="large" style={classes.sortButton} variant="contained">
             Filter My list
           </Button>
-
         </Grid>
-
-
       </Grid>
     </Box>
   );

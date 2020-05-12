@@ -3,10 +3,9 @@
 const classes = {
   root: {
     backgroundColor: "#F3FCF4",
-    marginLeft: 20,
-    height: '100vh',
-    marginRight: 20,
-    padding: 15,
+    minHeight: "100vh",
+    height: "auto",
+    padding: 50,
   },
 
   Headertext1: {
@@ -14,7 +13,6 @@ const classes = {
     marginTop: 5,
     fontSize: 25,
     fontWeight: 600,
-
     spacing: 2,
   },
   Headertext2: {
@@ -24,7 +22,6 @@ const classes = {
     fontWeight: 40,
     spacing: 2,
   },
-
   scrollWrapper: {
     overflowX: "hidden",
     overflowY: "hidden",
@@ -32,7 +29,6 @@ const classes = {
     width: "100%",
     scrollBehavior: "smooth",
   },
-
   card: {
     display: "inline-block",
     margin: 10,

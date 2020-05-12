@@ -1,3 +1,5 @@
+
+
 const classes = {
   root: {
     marginLeft: 30,
@@ -18,7 +20,7 @@ const classes = {
     paddingRight: 30,
   },
   button: {
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
     color: "#FFFFFF",
     padding: 10,
   },
@@ -47,7 +49,7 @@ const classes = {
     width: 80,
   },
   FooterContainer: {
-    backgroundColor: "#002E25",
+    backgroundColor: "#1081D1",
     height: "auto",
     padding: 30,
   },

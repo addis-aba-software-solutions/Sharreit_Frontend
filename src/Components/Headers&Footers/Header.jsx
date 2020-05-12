@@ -12,17 +12,17 @@ import { Add } from "@material-ui/icons";
 import Logo from "../../Assets/Group.svg";
 import keys from "../../Config/keys";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import logout from "./functions/logout"
-import routes from "../../Config/routes"
+import logout from "./functions/logout";
+import routes from "../../Config/routes";
 
 export default ({ history, location }) => {
   const fullName = localStorage.getItem(keys["FULL_NAME"]);
   const goodBye = () => {
-    const response = logout()
+    const response = logout();
     if (response) {
-      history.push(routes.root)
+      history.push(routes.root);
     }
-  }
+  };
   return (
     <AppBar
       style={{
@@ -38,50 +38,11 @@ export default ({ history, location }) => {
             <Grid item>
               <img src={Logo} style={classes.Logo} alt="" />
             </Grid>
-            <Grid item style={classes.ShareAppPadding}>
-              <Button style={classes.Headertext1}>
-                <Grid container>
-                  <Grid item>start</Grid>
-                  <Grid item style={classes.expand}>
-                    <ExpandMoreIcon fontSize="small" />
-                  </Grid>
-                </Grid>
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button style={classes.Headertext1}>
-                <Grid container>
-                  <Grid item>Sell</Grid>
-                  <Grid item style={classes.expand}>
-                    <ExpandMoreIcon fontSize="small" />
-                  </Grid>
-                </Grid>
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button style={classes.Headertext1}>
-                <Grid container>
-                  <Grid item>Market</Grid>
-                  <Grid item style={classes.expand}>
-                    <ExpandMoreIcon fontSize="small" />
-                  </Grid>
-                </Grid>
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button style={classes.Headertext1}>
-                <Grid container>
-                  <Grid item>Manage</Grid>
-                  <Grid item style={classes.expand}>
-                    <ExpandMoreIcon fontSize="small" />
-                  </Grid>
-                </Grid>
-              </Button>
-            </Grid>
+
           </Grid>
 
           <Grid xs={6} container spacing={4} display="flex" justify="flex-end">
-            <Grid item> 
+            <Grid item>
               <Button style={classes.Headertext1}>
                 <Grid container>
                   <Grid item>Pricing</Grid>
@@ -102,17 +63,26 @@ export default ({ history, location }) => {
               </Button>
             </Grid>
             <Grid item>
-              {fullName === "" || history.location.pathname == routes.singleItem ? (
+              {fullName === "" ||
+              history.location.pathname == routes.singleItem ? (
                 ""
               ) : (
-                <IconButton
-                  align="right"
+                <Button
                   variant="contained"
                   style={classes.button}
-                  onClick={() => history.push(routes.addItem)}
+                  startIcon={<Add />}
                 >
-                  <Add />
-                </IconButton>
+                  Post an item
+                </Button>
+
+                // <IconButton
+                //   align="right"
+                //   variant="contained"
+                //   style={classes.button}
+                //   onClick={() => history.push(routes.addItem)}
+                // >
+                //   <Add />
+                // </IconButton>
               )}
             </Grid>
             <Grid item>
@@ -127,15 +97,15 @@ export default ({ history, location }) => {
               ) : (
                 <Grid container>
                   <Grid item>
-                  <Typography variant="body1" style={classes.user_name}>
-                  {fullName}
-                  </Typography>
-                    </Grid>
-                    <Grid item>
+                    <Typography variant="body1" style={classes.user_name}>
+                      {fullName}
+                    </Typography>
+                  </Grid>
+                  <Grid item>
                     <IconButton onClick={goodBye}>
-                    <ExitToAppIcon color='secondary' />
-                  </IconButton>
-                    </Grid>
+                      <ExitToAppIcon color="secondary" />
+                    </IconButton>
+                  </Grid>
                 </Grid>
               )}
             </Grid>

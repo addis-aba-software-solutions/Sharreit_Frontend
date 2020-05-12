@@ -1,5 +1,6 @@
 const classes = {
   root: {
+    minHeight: '100vh',
     height: "auto",
     backgroundColor: "#F3FCF4",
     padding: 30,
@@ -11,8 +12,9 @@ const classes = {
   HeaderSecondRow: {
     paddingTop: 20,
     paddingBottom: 20,
-
+    // backgroundColor: '#F3FCF4'
     backgroundColor: '#1081D1'
+
   },
   Headertext2: {
     color: "#FFFFFF",

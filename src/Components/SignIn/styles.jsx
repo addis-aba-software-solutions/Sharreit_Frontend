@@ -28,17 +28,17 @@ export default makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
     height: 60,
     width: 60,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
-    color: "#008060",
+    color: "#1081D1",
   },
   submit: {
-    backgroundColor: "#008060",
+    backgroundColor: "#1081D1",
     color: "#FFFFFF",
     margin: theme.spacing(3, 0, 2),
   },
@@ -54,7 +54,7 @@ export default makeStyles((theme) => ({
     marginLeft: 20,
   },
   primary: {
-    color: "#008060",
+    color: "#1081D1",
   },
   FormHelperText: {
     marginLeft: 100,
@@ -62,7 +62,6 @@ export default makeStyles((theme) => ({
 
   loading: {
     margin: 20,
-    fontWeight: 600
-  }
-
+    fontWeight: 600,
+  },
 }));
